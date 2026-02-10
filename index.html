@@ -1,83 +1,97 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <title>JPTE Kebangsaan Tingkatan Enam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Laman Rasmi JPTE Kebangsaan Tingkatan Enam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-      url('https://images.unsplash.com/photo-1588072432836-e10032774350');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 120px 20px;
-      text-align: center;
-    }
-    .section-title {
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    footer {
-      background-color: #0d1b2a;
-      color: white;
-    }
-
-    .org-card {
-  background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  height: 100%;
+<style>
+body{
+  font-family:'Roboto',sans-serif;
+  background:#f5f7fa;
 }
-
-.org-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+.gov-header{
+  background:#0b3c5d;
+  color:white;
 }
-
-.org-card img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid #0d1b2a;
+.gov-header h1{
+  font-size:1.8rem;
+  font-weight:700;
 }
-
-.org-card span {
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+.navbar{
+  background:#092c44;
 }
-
-  </style>
+.nav-link{
+  color:white!important;
+  font-weight:500;
+}
+.hero{
+  background:#ffffff;
+  padding:60px 20px;
+}
+.section{
+  padding:60px 0;
+}
+.section-title{
+  font-weight:700;
+  border-left:6px solid #0b3c5d;
+  padding-left:15px;
+  margin-bottom:40px;
+}
+.card{
+  border:none;
+  border-radius:8px;
+}
+.org-card{
+  background:white;
+  padding:25px;
+  text-align:center;
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+.org-card img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #0b3c5d;
+}
+footer{
+  background:#092c44;
+  color:white;
+  padding:20px 0;
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+<div class="gov-header py-4">
+  <div class="container text-center">
+    <h1>JAWATANKUASA PERWAKILAN TINGKATAN ENAM</h1>
+    <p class="mb-0">Laman Rasmi JPTE Kebangsaan Tingkatan Enam</p>
+  </div>
+</div>
+
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">JPTE Tingkatan Enam</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">Visi & Misi</a></li>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Utama</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Pengenalan</a></li>
         <li class="nav-item"><a class="nav-link" href="#org">Organisasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#activity">Aktiviti</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Hubungi</a></li>
       </ul>
     </div>
@@ -86,63 +100,122 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
-  <h1 class="fw-bold">Jawatankuasa Perwakilan Tingkatan Enam</h1>
-  <p class="mt-3">Laman Rasmi JPTE Kebangsaan Tingkatan Enam</p>
-</section>
-
-<!-- VISI MISI -->
-<section id="org" class="py-5 bg-light">
   <div class="container">
-    <h2 class="section-title text-center mb-5">
-      Carta Organisasi JPTE Kebangsaan Tingkatan Enam
-    </h2>
-
-    <div class="row justify-content-center g-4">
-
-      <!-- YDP -->
-      <div class="col-lg-3 col-md-4">
-        <div class="org-card text-center">
-          <img src="img/jpte.jpg" alt="Yang Dipertua">
-          <h6 class="mt-3 mb-1 fw-bold">Nama Pelajar</h6>
-          <span class="text-muted">Yang Dipertua</span>
-        </div>
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h2 class="fw-bold">Selamat Datang ke Laman Rasmi JPTE</h2>
+        <p>
+          Portal ini merupakan medium rasmi Jawatankuasa Perwakilan Tingkatan Enam
+          dalam menyampaikan maklumat, aktiviti dan inisiatif berkaitan pelajar
+          Tingkatan Enam di peringkat kebangsaan.
+        </p>
       </div>
-
-      <!-- NYDP -->
-      <div class="col-lg-3 col-md-4">
-        <div class="org-card text-center">
-          <img src="img/nydp.jpg" alt="Naib Yang Dipertua">
-          <h6 class="mt-3 mb-1 fw-bold">Nama Pelajar</h6>
-          <span class="text-muted">Naib Yang Dipertua</span>
-        </div>
-      </div>
-
-      <!-- Setiausaha -->
-      <div class="col-lg-3 col-md-4">
-        <div class="org-card text-center">
-          <img src="img/setiausaha.jpg" alt="Setiausaha">
-          <h6 class="mt-3 mb-1 fw-bold">Nama Pelajar</h6>
-          <span class="text-muted">Setiausaha</span>
-        </div>
-      </div>
-
-      <!-- Bendahari -->
-      <div class="col-lg-3 col-md-4">
-        <div class="org-card text-center">
-          <img src="img/bendahari.jpg" alt="Bendahari">
-          <h6 class="mt-3 mb-1 fw-bold">Nama Pelajar</h6>
-          <span class="text-muted">Bendahari</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="section bg-white">
+  <div class="container">
+    <h3 class="section-title">Pengenalan</h3>
+    <p>
+      Jawatankuasa Perwakilan Tingkatan Enam (JPTE) berperanan sebagai badan
+      perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghubung antara
+      pihak pelajar dan pentadbiran sekolah.
+    </p>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+          <h5 class="fw-bold">Visi</h5>
+          <p>
+            Melahirkan pelajar Tingkatan Enam yang berintegriti, berdaya saing dan
+            berdisiplin selaras dengan aspirasi pendidikan negara.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+          <h5 class="fw-bold">Misi</h5>
+          <ul>
+            <li>Memperkasa kepimpinan pelajar</li>
+            <li>Menjadi saluran komunikasi rasmi</li>
+            <li>Menganjurkan aktiviti akademik dan sahsiah</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANISASI -->
+<section id="org" class="section">
+  <div class="container">
+    <h3 class="section-title">Carta Organisasi</h3>
+
+    <div class="row justify-content-center g-4">
+      <div class="col-md-3">
+        <div class="org-card">
+          <img src="img/ydp.jpg">
+          <h6 class="mt-3 fw-bold">Nama Pelajar</h6>
+          <small>Yang Dipertua</small>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="org-card">
+          <img src="img/nydp.jpg">
+          <h6 class="mt-3 fw-bold">Nama Pelajar</h6>
+          <small>Naib Yang Dipertua</small>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="org-card">
+          <img src="img/setiausaha.jpg">
+          <h6 class="mt-3 fw-bold">Nama Pelajar</h6>
+          <small>Setiausaha</small>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="org-card">
+          <img src="img/bendahari.jpg">
+          <h6 class="mt-3 fw-bold">Nama Pelajar</h6>
+          <small>Bendahari</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activity" class="section bg-white">
+  <div class="container">
+    <h3 class="section-title">Aktiviti & Program</h3>
+    <ul>
+      <li>Mesyuarat JPTE Kebangsaan</li>
+      <li>Program Kepimpinan Pelajar</li>
+      <li>Aktiviti Akademik Tingkatan Enam</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <h3 class="section-title">Hubungi Kami</h3>
+    <p>Email Rasmi: <strong>jpte.ting6@edu.my</strong></p>
+    <p>Sekolah: Tingkatan Enam Kebangsaan</p>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="py-3 text-center">
-  <p class="mb-0">© 2026 JPTE Kebangsaan Tingkatan Enam</p>
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">© 2026 Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan</p>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
