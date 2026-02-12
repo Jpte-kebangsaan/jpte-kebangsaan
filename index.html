@@ -210,6 +210,33 @@ opacity:.8;
 from{transform:rotateX(90deg); opacity:.2;}
 to{transform:rotateX(0); opacity:1;}
 }
+.gallery-img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:12px;
+transition:.4s;
+cursor:pointer;
+}
+.gallery-img:hover{
+transform:scale(1.07);
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+.org-card{
+cursor:pointer;
+}
+
+.org-info{
+max-height:0;
+overflow:hidden;
+transition:.4s;
+font-size:14px;
+}
+
+.org-card.active .org-info{
+max-height:200px;
+margin-top:10px;
+}
 
 </style>
 </head>
@@ -264,6 +291,8 @@ to{transform:rotateX(0); opacity:1;}
 <p>Portal rasmi penyampaian maklumat, aktiviti dan pengumuman pelajar Tingkatan Enam.</p>
 </div>
 </section>
+  <div class="text-center py-3 bg-dark text-white fw-semibold" id="clockMY"></div>
+
 <section class="text-center py-5 bg-white">
 <h3 class="fw-bold mb-4">STPM SEM 2 IN :</h3>
 
@@ -327,11 +356,14 @@ to{transform:rotateX(0); opacity:1;}
 
 <div class="row g-4">
 
-<div class="col-md-3">
-<div class="org-card">
+<div class="org-card" onclick="this.classList.toggle('active')">
 <img src="img/jpte.jpg">
 <h6 class="fw-bold">Nama Pelajar</h6>
 <small>Yang Dipertua</small>
+
+<div class="org-info">
+Email: contoh@email.com<br>
+Telefon: 0123456789
 </div>
 </div>
 
@@ -372,6 +404,27 @@ to{transform:rotateX(0); opacity:1;}
 <li>Program Kepimpinan Pelajar</li>
 <li>Aktiviti Akademik</li>
 </ul>
+</div>
+</section>
+<section class="section bg-white">
+<div class="container">
+<h3 class="section-title">Galeri Aktiviti</h3>
+
+<div class="row g-3">
+
+<div class="col-md-4">
+<img src="img/g1.jpg" class="gallery-img">
+</div>
+
+<div class="col-md-4">
+<img src="img/g2.jpg" class="gallery-img">
+</div>
+
+<div class="col-md-4">
+<img src="img/g3.jpg" class="gallery-img">
+</div>
+
+</div>
 </div>
 </section>
 
@@ -423,6 +476,24 @@ document.getElementById("minutes").innerHTML = minutes;
 document.getElementById("seconds").innerHTML = seconds;
 
 },1000);
+</script>
+<script>
+function updateClock(){
+const now = new Date();
+const options = {
+timeZone: "Asia/Kuala_Lumpur",
+hour: "2-digit",
+minute: "2-digit",
+second: "2-digit",
+day: "numeric",
+month: "long",
+year: "numeric"
+};
+document.getElementById("clockMY").innerHTML =
+"Malaysia Time : " + now.toLocaleString("ms-MY", options);
+}
+setInterval(updateClock,1000);
+updateClock();
 </script>
 
 </body>
