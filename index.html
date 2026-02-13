@@ -237,6 +237,88 @@ font-size:14px;
 max-height:200px;
 margin-top:10px;
 }
+.main-title{
+color:#0b3c5d;
+position:relative;
+display:inline-block;
+}
+
+.main-title::after{
+content:"";
+width:60%;
+height:4px;
+background:linear-gradient(90deg,#0b3c5d,#00d4ff);
+position:absolute;
+bottom:-10px;
+left:20%;
+border-radius:10px;
+}
+
+/* CARD */
+.service-card{
+background:white;
+padding:35px 20px;
+border-radius:20px;
+transition:.5s;
+position:relative;
+overflow:hidden;
+border:2px solid transparent;
+}
+
+/* neon glow border */
+.service-card:hover{
+transform:translateY(-12px);
+border:2px solid #00d4ff;
+box-shadow:
+0 0 15px #00d4ff,
+0 0 40px rgba(0,212,255,0.4),
+0 15px 60px rgba(0,0,0,0.25);
+}
+
+/* image circle */
+.service-img{
+width:150px;
+height:150px;
+margin:auto;
+border-radius:50%;
+border:5px solid #0b3c5d;
+padding:6px;
+margin-bottom:20px;
+transition:.6s;
+}
+
+/* rotate animation */
+.service-card:hover .service-img{
+transform:rotate(360deg);
+}
+
+.service-img img{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* text */
+.service-card h5{
+font-weight:700;
+color:#0b3c5d;
+}
+
+.service-card p{
+font-size:14px;
+color:#555;
+}
+
+/* skeleton loading */
+.skeleton{
+animation:skeletonLoading 1.2s linear infinite alternate;
+}
+
+@keyframes skeletonLoading{
+0%{opacity:.7}
+100%{opacity:1}
+}
 
 </style>
 </head>
@@ -414,16 +496,16 @@ Telefon: 0123456789
 </ul>
 </div>
 </section>
-  <section class="section bg-light text-center">
+<section class="section bg-light text-center">
 <div class="container">
 
-<h3 class="fw-bold mb-5" style="color:#0b3c5d;">Perkhidmatan JPTE</h3>
+<h3 class="fw-bold mb-5 main-title">Perkhidmatan JPTE</h3>
 
 <div class="row g-4">
 
-<!-- CARD 1 -->
+<!-- CARD -->
 <div class="col-md-6 col-lg-3">
-<div class="service-card">
+<div class="service-card skeleton">
 
 <div class="service-img">
 <img src="img/mesyuarat.jpg">
@@ -435,9 +517,8 @@ Telefon: 0123456789
 </div>
 </div>
 
-<!-- CARD 2 -->
 <div class="col-md-6 col-lg-3">
-<div class="service-card">
+<div class="service-card skeleton">
 
 <div class="service-img">
 <img src="img/kepimpinan.jpg">
@@ -449,9 +530,8 @@ Telefon: 0123456789
 </div>
 </div>
 
-<!-- CARD 3 -->
 <div class="col-md-6 col-lg-3">
-<div class="service-card">
+<div class="service-card skeleton">
 
 <div class="service-img">
 <img src="img/akademik.jpg">
@@ -463,15 +543,14 @@ Telefon: 0123456789
 </div>
 </div>
 
-<!-- CARD 4 -->
 <div class="col-md-6 col-lg-3">
-<div class="service-card">
+<div class="service-card skeleton">
 
 <div class="service-img">
 <img src="img/kebajikan.jpg">
 </div>
 
-<h5>Kebajikan Pelajar</h5>
+<h5>Kebajikan</h5>
 <p>Menjaga kebajikan dan suara pelajar secara rasmi.</p>
 
 </div>
@@ -480,6 +559,7 @@ Telefon: 0123456789
 </div>
 </div>
 </section>
+
 
 <section class="section bg-white">
 <div class="container">
@@ -569,6 +649,13 @@ document.getElementById("clockMY").innerHTML =
 }
 setInterval(updateClock,1000);
 updateClock();
+</script>
+<script>
+window.addEventListener("load",()=>{
+document.querySelectorAll(".skeleton").forEach(el=>{
+el.classList.remove("skeleton");
+});
+});
 </script>
 
 </body>
