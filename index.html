@@ -380,6 +380,89 @@ font-weight:bold;
 font-size:32px;
 text-shadow:0 5px 20px rgba(0,0,0,0.7);
 }
+/* CARD */
+.org-pro{
+background:white;
+padding:30px 20px;
+border-radius:18px;
+transition:.5s;
+position:relative;
+overflow:hidden;
+border:2px solid transparent;
+opacity:0;
+transform:translateY(40px);
+}
+
+/* reveal animation */
+.org-pro.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* glow border */
+.org-pro:hover{
+border:2px solid #00d4ff;
+box-shadow:
+0 0 15px #00d4ff,
+0 0 40px rgba(0,212,255,.4),
+0 15px 50px rgba(0,0,0,.25);
+transform:translateY(-12px) scale(1.04);
+}
+
+/* image */
+.org-img{
+width:130px;
+height:130px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+border:5px solid #0b3c5d;
+margin-bottom:15px;
+transition:.6s;
+}
+
+/* hover zoom */
+.org-pro:hover .org-img{
+transform:scale(1.1) rotate(5deg);
+}
+
+/* shine animation */
+.org-pro::after{
+content:"";
+position:absolute;
+top:-100%;
+left:-100%;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
+transform:rotate(25deg);
+transition:.8s;
+}
+
+.org-pro:hover::after{
+top:100%;
+left:100%;
+}
+
+/* text */
+.org-pro h6{
+font-weight:700;
+color:#0b3c5d;
+}
+
+.org-pro small{
+color:#555;
+}
+
+/* skeleton loading */
+.skeleton{
+animation:skeleton 1.2s infinite alternate;
+}
+
+@keyframes skeleton{
+0%{opacity:.6}
+100%{opacity:1}
+}
 
 </style>
 </head>
@@ -502,59 +585,64 @@ text-shadow:0 5px 20px rgba(0,0,0,0.7);
 <h2>JPTE MEMIMPIN GENERASI MASA HADAPAN</h2>
 </section>
 
-<!-- ORGANISASI -->
-<section id="org" class="section">
+<section id="org" class="section text-center bg-white">
+
 <div class="container">
-<h3 class="section-title">Carta Organisasi</h3>
+<h3 class="section-title mb-5">Carta Organisasi</h3>
 
 <div class="row g-4">
 
-<div class="org-card" onclick="this.classList.toggle('active')">
+<!-- CARD -->
+<div class="col-md-3">
+<div class="org-pro skeleton">
+
+<div class="org-img">
 <img src="img/jpte.jpg">
-<h6 class="fw-bold">Nama Pelajar</h6>
+</div>
+
+<h6>Nama Pelajar</h6>
 <small>Yang Dipertua</small>
 
-<div class="org-info">
-PTE: -NAMA NEGERI-<br>
-Telefon: 0123456789
 </div>
 </div>
 
-<div class="org-card" onclick="this.classList.toggle('active')">
+<!-- CARD -->
+<div class="col-md-3">
+<div class="org-pro skeleton">
+<div class="org-img">
 <img src="img/jpte.jpg">
-<h6 class="fw-bold">Nama Pelajar</h6>
+</div>
+<h6>Nama Pelajar</h6>
 <small>Naib Yang Dipertua</small>
-
-<div class="org-info">
-PTE: -NAMA NEGERI-<br>
-Telefon: 0123456789
 </div>
 </div>
 
-<div class="org-card" onclick="this.classList.toggle('active')">
+<!-- CARD -->
+<div class="col-md-3">
+<div class="org-pro skeleton">
+<div class="org-img">
 <img src="img/jpte.jpg">
-<h6 class="fw-bold">Nama Pelajar</h6>
+</div>
+<h6>Nama Pelajar</h6>
 <small>Setiausaha</small>
+</div>
+</div>
 
-<div class="org-info">
-PTE: -NAMA NEGERI-<br>
-Telefon: 0123456789
-</div>
-</div>
-<div class="org-card" onclick="this.classList.toggle('active')">
+<!-- CARD -->
+<div class="col-md-3">
+<div class="org-pro skeleton">
+<div class="org-img">
 <img src="img/jpte.jpg">
-<h6 class="fw-bold">Nama Pelajar</h6>
+</div>
+<h6>Nama Pelajar</h6>
 <small>Bendahari</small>
-
-<div class="org-info">
-PTE: -NAMA NEGERI-<br>
-Telefon: 0123456789
 </div>
 </div>
 
 </div>
 </div>
 </section>
+
 
 <!-- ACTIVITI -->
 <section id="activity" class="section bg-white">
@@ -753,6 +841,29 @@ document.getElementById("loader").style.display="none";
 },600);
 },1200);
 });
+</script>
+<script>
+
+/* remove skeleton after load */
+window.addEventListener("load",()=>{
+document.querySelectorAll(".skeleton").forEach(el=>{
+el.classList.remove("skeleton");
+});
+});
+
+/* reveal on scroll */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:.2});
+
+document.querySelectorAll(".org-pro").forEach(el=>{
+observer.observe(el);
+});
+
 </script>
 
 </body>
