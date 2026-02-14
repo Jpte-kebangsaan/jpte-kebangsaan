@@ -463,6 +463,38 @@ animation:skeleton 1.2s infinite alternate;
 0%{opacity:.6}
 100%{opacity:1}
 }
+.navbar-toggler{
+border:none;
+}
+.navbar-toggler-icon{
+filter:invert(1);
+}
+.parallax{
+background:url("img/banner.jpg") center/cover no-repeat;
+}
+@media(min-width:768px){
+.parallax{
+background-attachment:fixed;
+}
+}
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+.section{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
 
 </style>
 </head>
@@ -863,8 +895,13 @@ entry.target.classList.add("show");
 document.querySelectorAll(".org-pro").forEach(el=>{
 observer.observe(el);
 });
-
+document.querySelectorAll(".section").forEach(el=>{
+observer.observe(el);
+});
 </script>
+document.querySelectorAll(".section").forEach(el=>{
+observer.observe(el);
+});
 
 </body>
 </html>
