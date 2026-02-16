@@ -1188,6 +1188,7 @@ document.getElementById("loader").classList.add("hide");
 </script>
 <script>
 
+<script>
 /* remove skeleton after load */
 window.addEventListener("load",()=>{
 document.querySelectorAll(".skeleton").forEach(el=>{
@@ -1211,11 +1212,14 @@ observer.observe(el);
 document.querySelectorAll(".section").forEach(el=>{
 observer.observe(el);
 });
+
+/* navbar blur scroll */
 window.addEventListener("scroll",()=>{
 document.querySelector(".navbar")
 .classList.toggle("scrolled",window.scrollY>50);
 });
-<script>
+
+/* reveal button animation */
 const btnObserver = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -1228,9 +1232,6 @@ document.querySelectorAll(".reveal-btn").forEach(el=>{
 btnObserver.observe(el);
 });
 </script>
-
-</script>
-
 
 
 </body>
