@@ -544,6 +544,14 @@ box-shadow:0 8px 32px rgba(0,0,0,0.2);
 padding:30px;
 color:white;
 }
+#loader.hide{
+opacity:0;
+visibility:hidden;
+}
+.navbar.scrolled{
+backdrop-filter:blur(10px);
+background:rgba(2,6,23,0.85) !important;
+}
 
 </style>
 </head>
@@ -969,12 +977,10 @@ document.body.classList.contains("dark")?"dark":"light"
 <script>
 window.addEventListener("load",()=>{
 setTimeout(()=>{
-document.getElementById("loader").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},600);
+document.getElementById("loader").classList.add("hide");
 },1200);
 });
+
 </script>
 <script>
 
@@ -997,13 +1003,17 @@ entry.target.classList.add("show");
 document.querySelectorAll(".org-pro").forEach(el=>{
 observer.observe(el);
 });
+
 document.querySelectorAll(".section").forEach(el=>{
 observer.observe(el);
 });
+window.addEventListener("scroll",()=>{
+document.querySelector(".navbar")
+.classList.toggle("scrolled",window.scrollY>50);
+});
+
 </script>
-document.querySelectorAll(".section").forEach(el=>{
-observer.observe(el);
-});
+
 
 </body>
 </html>
