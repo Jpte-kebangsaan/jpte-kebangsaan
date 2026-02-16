@@ -495,6 +495,45 @@ transition:1s;
 opacity:1;
 transform:translateY(0);
 }
+.pro-card{
+background:white;
+padding:35px 25px;
+border-radius:20px;
+transition:.5s;
+border:2px solid transparent;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.pro-card i{
+font-size:38px;
+margin-bottom:15px;
+color:#0b3c5d;
+transition:.4s;
+}
+
+.pro-card h5{
+font-weight:700;
+margin-bottom:10px;
+color:#0b3c5d;
+}
+
+.pro-card p{
+font-size:14px;
+color:#555;
+}
+
+.pro-card:hover{
+transform:translateY(-12px);
+border:2px solid #00d4ff;
+box-shadow:
+0 0 20px rgba(0,212,255,0.5),
+0 15px 50px rgba(0,0,0,0.25);
+}
+
+.pro-card:hover i{
+transform:scale(1.2) rotate(8deg);
+color:#00d4ff;
+}
 
 </style>
 </head>
@@ -541,6 +580,7 @@ transform:translateY(0);
 <ul class="navbar-nav mx-auto">
 <li class="nav-item"><a class="nav-link" href="#home">Utama</a></li>
 <li class="nav-item"><a class="nav-link" href="#about">Pengenalan</a></li>
+<li class="nav-item"><a class="nav-link" href="#kepentingan">Kepentingan</a></li>
 <li class="nav-item"><a class="nav-link" href="#org">Organisasi</a></li>
 <li class="nav-item"><a class="nav-link" href="#activity">Aktiviti</a></li>
 <li class="nav-item"><a class="nav-link" href="#contact">Hubungi</a></li>
@@ -613,6 +653,53 @@ transform:translateY(0);
 </div>
 </div>
 </section>
+  <section id="kepentingan" class="section bg-light">
+<div class="container text-center">
+
+<h3 class="section-title mb-5">Kepentingan Penubuhan JPTEK</h3>
+
+<div class="row g-4">
+
+<!-- CARD 1 -->
+<div class="col-md-6 col-lg-3">
+<div class="pro-card reveal">
+<i class="fas fa-user-tie"></i>
+<h5>Kepimpinan</h5>
+<p>Membentuk pelajar berkeyakinan tinggi, berani membuat keputusan dan berdaya saing.</p>
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="col-md-6 col-lg-3">
+<div class="pro-card reveal">
+<i class="fas fa-vote-yea"></i>
+<h5>Demokrasi</h5>
+<p>Memberi pengalaman sebenar sistem pilihan raya dan proses membuat keputusan.</p>
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="col-md-6 col-lg-3">
+<div class="pro-card reveal">
+<i class="fas fa-landmark"></i>
+<h5>Selaras Nasional</h5>
+<p>Sejajar dengan matlamat pendidikan negara dan Pelan Hala Tuju Tingkatan Enam.</p>
+</div>
+</div>
+
+<!-- CARD 4 -->
+<div class="col-md-6 col-lg-3">
+<div class="pro-card reveal">
+<i class="fas fa-comments"></i>
+<h5>Suara Pelajar</h5>
+<p>Menjadi penghubung rasmi antara murid dan pentadbiran sekolah.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
 <section class="parallax">
 <h2>JPTE MEMIMPIN GENERASI MASA HADAPAN</h2>
 </section>
