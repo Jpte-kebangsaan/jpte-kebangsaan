@@ -552,6 +552,68 @@ visibility:hidden;
 backdrop-filter:blur(10px);
 background:rgba(2,6,23,0.85) !important;
 }
+.btn-pro{
+border:none;
+padding:14px 30px;
+font-weight:600;
+border-radius:40px;
+letter-spacing:.5px;
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+/* Glow Blue */
+.btn-glow{
+background:#0b3c5d;
+color:white;
+box-shadow:0 0 15px rgba(0,212,255,.5);
+}
+.btn-glow:hover{
+background:#00d4ff;
+color:#000;
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 0 25px #00d4ff,0 0 60px rgba(0,212,255,.6);
+}
+
+/* Gradient */
+.btn-gradient{
+background:linear-gradient(45deg,#00d4ff,#0b3c5d);
+color:white;
+}
+.btn-gradient:hover{
+transform:scale(1.08);
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* Outline Neon */
+.btn-neon{
+background:transparent;
+border:2px solid #00d4ff;
+color:#00d4ff;
+}
+.btn-neon:hover{
+background:#00d4ff;
+color:black;
+box-shadow:0 0 20px #00d4ff;
+}
+
+/* Shine Effect */
+.btn-shine::after{
+content:"";
+position:absolute;
+top:-100%;
+left:-100%;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+transform:rotate(25deg);
+transition:.7s;
+}
+.btn-shine:hover::after{
+top:100%;
+left:100%;
+}
 
 </style>
 </head>
@@ -610,11 +672,10 @@ background:rgba(2,6,23,0.85) !important;
 <!-- HERO -->
 <section id="home" class="hero text-center">
 <div class="container">
-<h2 class="fw-bold mb-3">Selamat Datang ke Portal Rasmi JPTE</h2>
-<p>Portal rasmi penyampaian maklumat, aktiviti dan pengumuman pelajar Tingkatan Enam.</p>
+<h2 class="fw-bold mb-3">Selamat Datang ke Portal Rasmi JPTEK</h2>
 </div>
   <div class="glass mt-4 mx-auto" style="max-width:600px;">
-<h4 class="fw-bold">Portal Rasmi JPTE</h4>
+<h4 class="fw-bold">Portal Rasmi JPTEK</h4>
 <p>Platform rasmi maklumat, aktiviti dan komunikasi pelajar Tingkatan Enam seluruh negara.</p>
 </div>
 
@@ -622,7 +683,7 @@ background:rgba(2,6,23,0.85) !important;
   <div class="text-center py-3 bg-dark text-white fw-semibold" id="clockMY"></div>
 
 <section class="text-center py-5 bg-white">
-<h3 class="fw-bold mb-4">STPM SEM 2 IN :</h3>
+<h3 class="fw-bold mb-4">EXAM SEM 2 IN : KEEP GOING !!</h3>
 
 <div class="countdown">
 
@@ -883,6 +944,11 @@ background:rgba(2,6,23,0.85) !important;
 </div>
 </div>
 </section>
+<a href="https://forms.gle/LINKFORMANDA" target="_blank"
+class="btn-pro btn-glow btn-shine">
+<i class="fas fa-bullhorn me-2"></i>
+Sila Kemukakan Aduan & Cadangan
+</a>
 
 <!-- CONTACT -->
 <section id="contact" class="section text-center">
