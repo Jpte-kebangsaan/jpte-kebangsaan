@@ -614,6 +614,36 @@ transition:.7s;
 top:100%;
 left:100%;
 }
+.float-btn{
+position:fixed;
+right:25px;
+bottom:25px;
+background:#0b3c5d;
+color:white;
+width:70px;
+height:70px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+z-index:9999;
+transition:.4s;
+animation:floatPulse 2s infinite;
+}
+
+.float-btn:hover{
+background:#00d4ff;
+color:black;
+transform:scale(1.15);
+}
+
+@keyframes floatPulse{
+0%{box-shadow:0 0 0 0 rgba(0,212,255,.7);}
+70%{box-shadow:0 0 0 20px rgba(0,212,255,0);}
+100%{box-shadow:0 0 0 0 rgba(0,212,255,0);}
+}
 
 </style>
 </head>
@@ -944,11 +974,7 @@ left:100%;
 </div>
 </div>
 </section>
-<a href="https://forms.gle/LINKFORMANDA" target="_blank"
-class="btn-pro btn-glow btn-shine">
-<i class="fas fa-bullhorn me-2"></i>
-Sila Kemukakan Aduan & Cadangan
-</a>
+
 
 <!-- CONTACT -->
 <section id="contact" class="section text-center">
@@ -1080,6 +1106,9 @@ document.querySelector(".navbar")
 
 </script>
 
+<a href="https://forms.gle/LINKFORMANDA" target="_blank" class="float-btn">
+<i class="fas fa-comment-dots"></i>
+</a>
 
 </body>
 </html>
