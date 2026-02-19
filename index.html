@@ -1148,6 +1148,19 @@ to{transform:scale(1);opacity:1;}
   color: #00f2fe;
   transform: scale(1.2);
 }
+.hero-moto{
+  color:white;
+  text-shadow:
+    0 0 5px #00f2fe,
+    0 0 10px #00f2fe,
+    0 0 20px #00f2fe;
+  animation: glowMoto 2s infinite alternate;
+}
+
+@keyframes glowMoto{
+  from { text-shadow: 0 0 5px #00f2fe, 0 0 10px #00f2fe, 0 0 20px #00f2fe; }
+  to { text-shadow: 0 0 10px #56CCF2, 0 0 20px #56CCF2, 0 0 30px #56CCF2; }
+}
 
 </style>
 </head>
@@ -1209,6 +1222,9 @@ to{transform:scale(1);opacity:1;}
 <section id="home" class="hero text-center">
 <div class="container">
 <h2 class="fw-bold mb-3">Selamat Datang ke Portal Rasmi JPTEK</h2>
+   <p class="hero-moto fw-semibold mb-3" style="font-size:1.3rem; font-style:italic; text-shadow:0 0 10px #00f2fe;">
+      Aspirasi Pelajar, Keutuhan Negara
+    </p>
 </div>
   <div class="glass mt-4 mx-auto" style="max-width:600px;">
 <h4 class="fw-bold">Portal Rasmi JPTEK</h4>
