@@ -1176,6 +1176,37 @@ padding:6px 10px;
 border-radius:20px;
 letter-spacing:.5px;
 }
+  .map-wrapper{
+max-width:800px;
+margin:auto;
+}
+
+.malaysia-map{
+width:100%;
+height:auto;
+}
+
+.state{
+fill:#56CCF2;
+stroke:white;
+stroke-width:2;
+cursor:pointer;
+transition:.3s;
+}
+
+.state:hover{
+fill:#00f2fe;
+transform:scale(1.02);
+}
+
+.map-info{
+margin-top:20px;
+font-weight:600;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
 </style>
 </head>
 
@@ -1450,23 +1481,38 @@ JPTE merupakan badan perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghu
 </div> <!-- tutup container -->
 </section> <!-- tutup section organisasi -->
 
-<section class="section bg-white">
-<div class="container text-center">
-<h3 class="section-title">YDP Negeri</h3>
-<div class="row g-4">
+<section class="section bg-light text-center">
+<div class="container">
+<h3 class="section-title">Peta YDP Negeri</h3>
 
-<div class="col-md-3">
-<div class="pro-card">
-<h5>Pulau Pinang</h5>
-<p>Nama YDP</p>
-</div>
-</div>
+<div class="map-wrapper">
 
-<div class="col-md-3">
-<div class="pro-card">
-<h5>Selangor</h5>
-<p>Nama YDP</p>
-</div>
+<svg viewBox="0 0 800 400" class="malaysia-map">
+
+<!-- PULAU PINANG -->
+<path d="M120,150 L150,140 L160,170 L130,180 Z"
+class="state" data-name="Pulau Pinang" data-ydp="Nama YDP Pulau Pinang"></path>
+
+<!-- SELANGOR -->
+<path d="M250,200 L300,190 L320,230 L270,240 Z"
+class="state" data-name="Selangor" data-ydp="Nama YDP Selangor"></path>
+
+<!-- JOHOR -->
+<path d="M400,300 L470,300 L460,350 L390,350 Z"
+class="state" data-name="Johor" data-ydp="Nama YDP Johor"></path>
+
+<!-- SABAH -->
+<path d="M650,120 L730,110 L740,180 L660,190 Z"
+class="state" data-name="Sabah" data-ydp="Nama YDP Sabah"></path>
+
+<!-- SARAWAK -->
+<path d="M540,150 L630,140 L640,230 L550,240 Z"
+class="state" data-name="Sarawak" data-ydp="Nama YDP Sarawak"></path>
+
+</svg>
+
+<div id="mapInfo" class="map-info">
+Klik negeri untuk lihat YDP
 </div>
 
 </div>
@@ -1831,6 +1877,22 @@ document.addEventListener("DOMContentLoaded", function() {
       modal.style.display = "none";
     }
   });
+});
+
+document.querySelectorAll(".service-card").forEach(card=>{
+card.addEventListener("mouseenter",()=>{
+new Audio("hover.mp3").play();
+});
+});
+
+document.querySelectorAll(".state").forEach(state=>{
+state.addEventListener("click",()=>{
+const name = state.dataset.name;
+const ydp = state.dataset.ydp;
+
+document.getElementById("mapInfo").innerHTML =
+"Negeri: <b>"+name+"</b><br>YDP: <b>"+ydp+"</b>";
+});
 });
 
 </script>
