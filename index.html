@@ -1257,6 +1257,60 @@ border-radius:14px;
 box-shadow:0 10px 30px rgba(0,0,0,.15);
 font-weight:600;
 }
+  body{
+font-family:Segoe UI;
+background:linear-gradient(#c7ecff,#e9f8ff);
+text-align:center;
+padding:30px;
+}
+
+svg{
+max-width:900px;
+width:100%;
+}
+
+.state{
+fill:#5ac8fa;
+stroke:white;
+stroke-width:1.5;
+cursor:pointer;
+transition:.3s;
+}
+
+.state:hover{
+fill:#0077b6;
+transform:scale(1.02);
+filter:drop-shadow(0 0 6px rgba(0,0,0,.3));
+}
+
+#infoBox{
+margin-top:25px;
+background:white;
+display:inline-block;
+padding:15px 30px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.15);
+font-weight:bold;
+}
+  .state{
+fill:#8fd3ff;
+stroke:#ffffff;
+stroke-width:1.5;
+cursor:pointer;
+transition:.3s;
+}
+
+.state:hover{
+fill:#0077b6;
+transform:scale(1.05);
+filter:drop-shadow(0 0 10px rgba(0,0,0,.25));
+}
+
+.state.active{
+fill:#001d3d !important;
+stroke:#ffd60a;
+stroke-width:2.5;
+}
 </style>
 </head>
 
@@ -1537,25 +1591,61 @@ JPTE merupakan badan perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghu
 
 <div class="map-container">
 
-<svg viewBox="0 0 900 500" id="malaysiaMap">
+<svg viewBox="0 0 1000 600" id="malaysiaMap">
 
-<!-- STATES -->
-<path class="state" data-name="Perlis" data-ydp="Nama YDP Perlis" d="M150,120 L170,110 L180,130 L160,140 Z"/>
-<path class="state" data-name="Kedah" data-ydp="Nama YDP Kedah" d="M160,140 L200,130 L220,180 L170,190 Z"/>
-<path class="state" data-name="Pulau Pinang" data-ydp="Nama YDP Pulau Pinang" d="M140,180 L155,175 L160,190 L145,195 Z"/>
-<path class="state" data-name="Perak" data-ydp="Nama YDP Perak" d="M200,180 L240,170 L260,230 L210,240 Z"/>
-<path class="state" data-name="Selangor" data-ydp="Nama YDP Selangor" d="M230,240 L270,230 L290,270 L250,285 Z"/>
-<path class="state" data-name="Negeri Sembilan" data-ydp="Nama YDP NS" d="M270,285 L310,280 L320,310 L280,320 Z"/>
-<path class="state" data-name="Melaka" data-ydp="Nama YDP Melaka" d="M260,320 L290,315 L295,340 L265,345 Z"/>
-<path class="state" data-name="Johor" data-ydp="Nama YDP Johor" d="M290,340 L350,330 L370,390 L310,400 Z"/>
-<path class="state" data-name="Pahang" data-ydp="Nama YDP Pahang" d="M300,220 L360,210 L380,300 L320,310 Z"/>
-<path class="state" data-name="Terengganu" data-ydp="Nama YDP Terengganu" d="M360,210 L390,205 L400,260 L370,265 Z"/>
-<path class="state" data-name="Kelantan" data-ydp="Nama YDP Kelantan" d="M340,170 L380,165 L390,205 L350,210 Z"/>
-<path class="state" data-name="Sarawak" data-ydp="Nama YDP Sarawak" d="M520,200 L650,180 L670,300 L540,320 Z"/>
-<path class="state" data-name="Sabah" data-ydp="Nama YDP Sabah" d="M690,160 L820,150 L830,260 L700,270 Z"/>
+<!-- PERLIS -->
+<path class="state" data-name="Perlis" data-ydp="Nama YDP Perlis"
+d="M310 120 L330 120 L335 140 L315 145 Z"/>
+
+<!-- KEDAH -->
+<path class="state" data-name="Kedah" data-ydp="Nama YDP Kedah"
+d="M300 140 L350 140 L360 210 L310 220 Z"/>
+
+<!-- PULAU PINANG -->
+<path class="state" data-name="Pulau Pinang" data-ydp="Nama YDP PP"
+d="M280 190 L300 190 L300 210 L280 210 Z"/>
+
+<!-- PERAK -->
+<path class="state" data-name="Perak" data-ydp="Nama YDP Perak"
+d="M320 220 L390 210 L400 300 L330 310 Z"/>
+
+<!-- KELANTAN -->
+<path class="state" data-name="Kelantan" data-ydp="Nama YDP Kelantan"
+d="M390 150 L450 150 L460 230 L400 230 Z"/>
+
+<!-- TERENGGANU -->
+<path class="state" data-name="Terengganu" data-ydp="Nama YDP Terengganu"
+d="M410 240 L470 240 L480 320 L420 330 Z"/>
+
+<!-- PAHANG -->
+<path class="state" data-name="Pahang" data-ydp="Nama YDP Pahang"
+d="M380 240 L460 240 L470 380 L390 390 Z"/>
+
+<!-- SELANGOR -->
+<path class="state" data-name="Selangor" data-ydp="Nama YDP Selangor"
+d="M340 310 L400 300 L410 350 L350 360 Z"/>
+
+<!-- NEGERI SEMBILAN -->
+<path class="state" data-name="Negeri Sembilan" data-ydp="Nama YDP NS"
+d="M360 360 L420 350 L430 390 L370 400 Z"/>
+
+<!-- MELAKA -->
+<path class="state" data-name="Melaka" data-ydp="Nama YDP Melaka"
+d="M370 400 L420 395 L425 425 L375 430 Z"/>
+
+<!-- JOHOR -->
+<path class="state" data-name="Johor" data-ydp="Nama YDP Johor"
+d="M400 430 L520 420 L530 520 L410 540 Z"/>
+
+<!-- SARAWAK -->
+<path class="state" data-name="Sarawak" data-ydp="Nama YDP Sarawak"
+d="M560 260 L720 240 L780 300 L760 420 L600 430 L560 350 Z"/>
+
+<!-- SABAH -->
+<path class="state" data-name="Sabah" data-ydp="Nama YDP Sabah"
+d="M800 230 L940 220 L960 330 L820 350 Z"/>
 
 </svg>
-
 <div id="tooltip"></div>
 
 <div id="stateCard" class="state-card">
@@ -1969,6 +2059,32 @@ card.innerHTML=
 "Negeri: <b>"+state.dataset.name+
 "</b><br>YDP: <b>"+state.dataset.ydp+"</b>";
 });
+});
+const states=document.querySelectorAll(".state");
+const tooltip=document.getElementById("tooltip");
+const card=document.getElementById("stateCard");
+
+states.forEach(s=>{
+
+s.addEventListener("mousemove",e=>{
+tooltip.style.left=e.pageX+15+"px";
+tooltip.style.top=e.pageY+15+"px";
+tooltip.style.opacity=1;
+tooltip.innerHTML=s.dataset.name;
+});
+
+s.addEventListener("mouseleave",()=>{
+tooltip.style.opacity=0;
+});
+
+s.addEventListener("click",()=>{
+states.forEach(x=>x.classList.remove("active"));
+s.classList.add("active");
+
+card.innerHTML=
+"<b>"+s.dataset.name+"</b><br>YDP: "+s.dataset.ydp;
+});
+
 });
 
 </script>
