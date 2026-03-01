@@ -1207,6 +1207,56 @@ padding:15px;
 border-radius:12px;
 box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
+  .map-container{
+position:relative;
+max-width:900px;
+margin:auto;
+}
+
+#malaysiaMap{
+width:100%;
+}
+
+.state{
+fill:#5ac8e0;
+stroke:white;
+stroke-width:2;
+cursor:pointer;
+transition:.35s;
+transform-origin:center;
+}
+
+.state:hover{
+fill:#00f2fe;
+filter:drop-shadow(0 0 12px #00f2fe);
+}
+
+.state.active{
+fill:#00ffa6 !important;
+filter:drop-shadow(0 0 18px #00ffa6);
+transform:scale(1.08);
+}
+
+#tooltip{
+position:absolute;
+background:#0b3c5d;
+color:white;
+padding:6px 12px;
+border-radius:8px;
+font-size:13px;
+pointer-events:none;
+opacity:0;
+transition:.2s;
+}
+
+.state-card{
+margin-top:20px;
+background:white;
+padding:18px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+font-weight:600;
+}
 </style>
 </head>
 
@@ -1483,42 +1533,38 @@ JPTE merupakan badan perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghu
 
 <section class="section bg-light text-center">
 <div class="container">
-<h3 class="section-title">Peta YDP Negeri</h3>
+<h3 class="section-title">Peta Interaktif YDP Negeri</h3>
 
-<div class="map-wrapper">
+<div class="map-container">
 
-<svg viewBox="0 0 800 400" class="malaysia-map">
+<svg viewBox="0 0 900 500" id="malaysiaMap">
 
-<!-- PULAU PINANG -->
-<path d="M120,150 L150,140 L160,170 L130,180 Z"
-class="state" data-name="Pulau Pinang" data-ydp="Nama YDP Pulau Pinang"></path>
-
-<!-- SELANGOR -->
-<path d="M250,200 L300,190 L320,230 L270,240 Z"
-class="state" data-name="Selangor" data-ydp="Nama YDP Selangor"></path>
-
-<!-- JOHOR -->
-<path d="M400,300 L470,300 L460,350 L390,350 Z"
-class="state" data-name="Johor" data-ydp="Nama YDP Johor"></path>
-
-<!-- SABAH -->
-<path d="M650,120 L730,110 L740,180 L660,190 Z"
-class="state" data-name="Sabah" data-ydp="Nama YDP Sabah"></path>
-
-<!-- SARAWAK -->
-<path d="M540,150 L630,140 L640,230 L550,240 Z"
-class="state" data-name="Sarawak" data-ydp="Nama YDP Sarawak"></path>
+<!-- STATES -->
+<path class="state" data-name="Perlis" data-ydp="Nama YDP Perlis" d="M150,120 L170,110 L180,130 L160,140 Z"/>
+<path class="state" data-name="Kedah" data-ydp="Nama YDP Kedah" d="M160,140 L200,130 L220,180 L170,190 Z"/>
+<path class="state" data-name="Pulau Pinang" data-ydp="Nama YDP Pulau Pinang" d="M140,180 L155,175 L160,190 L145,195 Z"/>
+<path class="state" data-name="Perak" data-ydp="Nama YDP Perak" d="M200,180 L240,170 L260,230 L210,240 Z"/>
+<path class="state" data-name="Selangor" data-ydp="Nama YDP Selangor" d="M230,240 L270,230 L290,270 L250,285 Z"/>
+<path class="state" data-name="Negeri Sembilan" data-ydp="Nama YDP NS" d="M270,285 L310,280 L320,310 L280,320 Z"/>
+<path class="state" data-name="Melaka" data-ydp="Nama YDP Melaka" d="M260,320 L290,315 L295,340 L265,345 Z"/>
+<path class="state" data-name="Johor" data-ydp="Nama YDP Johor" d="M290,340 L350,330 L370,390 L310,400 Z"/>
+<path class="state" data-name="Pahang" data-ydp="Nama YDP Pahang" d="M300,220 L360,210 L380,300 L320,310 Z"/>
+<path class="state" data-name="Terengganu" data-ydp="Nama YDP Terengganu" d="M360,210 L390,205 L400,260 L370,265 Z"/>
+<path class="state" data-name="Kelantan" data-ydp="Nama YDP Kelantan" d="M340,170 L380,165 L390,205 L350,210 Z"/>
+<path class="state" data-name="Sarawak" data-ydp="Nama YDP Sarawak" d="M520,200 L650,180 L670,300 L540,320 Z"/>
+<path class="state" data-name="Sabah" data-ydp="Nama YDP Sabah" d="M690,160 L820,150 L830,260 L700,270 Z"/>
 
 </svg>
 
-<div id="mapInfo" class="map-info">
-Klik negeri untuk lihat YDP
+<div id="tooltip"></div>
+
+<div id="stateCard" class="state-card">
+Klik negeri untuk info
 </div>
 
 </div>
 </div>
 </section>
-
 
 <section class="section bg-light">
 <div class="container">
@@ -1892,6 +1938,36 @@ const ydp = state.dataset.ydp;
 
 document.getElementById("mapInfo").innerHTML =
 "Negeri: <b>"+name+"</b><br>YDP: <b>"+ydp+"</b>";
+});
+});
+
+const states=document.querySelectorAll(".state");
+const tooltip=document.getElementById("tooltip");
+const card=document.getElementById("stateCard");
+
+states.forEach(state=>{
+
+// hover tooltip
+state.addEventListener("mousemove",e=>{
+tooltip.style.left=e.offsetX+20+"px";
+tooltip.style.top=e.offsetY+"px";
+tooltip.style.opacity=1;
+tooltip.innerHTML=state.dataset.name;
+});
+
+state.addEventListener("mouseleave",()=>{
+tooltip.style.opacity=0;
+});
+
+// click select
+state.addEventListener("click",()=>{
+
+states.forEach(s=>s.classList.remove("active"));
+state.classList.add("active");
+
+card.innerHTML=
+"Negeri: <b>"+state.dataset.name+
+"</b><br>YDP: <b>"+state.dataset.ydp+"</b>";
 });
 });
 
