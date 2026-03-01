@@ -1322,6 +1322,71 @@ cursor:pointer;
 fill:#0077b6;
 transform:scale(1.03);
 }
+  .map-wrapper{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+}
+
+.malaysia-map{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* Button overlay untuk negeri */
+.state-btn{
+  position:absolute;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:#00f2fe;
+  border:2px solid white;
+  cursor:pointer;
+  transition:transform .3s, box-shadow .3s;
+}
+
+.state-btn:hover{
+  transform:scale(1.3);
+  box-shadow:0 0 15px #00f2fe, 0 0 25px rgba(0,242,254,0.6);
+}
+
+/* Modal */
+.img-modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  padding-top:100px;
+  left:0; top:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+}
+
+.modal-content{
+  margin:auto;
+  display:block;
+  max-width:400px;
+  border-radius:12px;
+}
+
+.close-modal{
+  position:absolute;
+  top:20px;
+  right:35px;
+  color:#fff;
+  font-size:40px;
+  cursor:pointer;
+  transition:.3s;
+}
+.close-modal:hover{
+  color:#00f2fe;
+  transform:scale(1.2);
+}
+
+#modalCaption{
+  text-align:center;
+  margin-top:15px;
+}
 </style>
 </head>
 
@@ -1602,61 +1667,26 @@ JPTE merupakan badan perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghu
 
 <div class="map-container">
 
-<svg viewBox="0 0 1000 600" id="malaysiaMap">
+<section class="section bg-light text-center">
+  <h3 class="section-title">Peta Interaktif YDP Negeri</h3>
 
-<!-- PERLIS -->
-<path class="state" data-name="Perlis" data-ydp="YDP Perlis"
-d="M360 120 Q370 110 380 120 Q385 135 365 140 Z"/>
+  <div class="map-wrapper position-relative">
+    <img src="img/malaysia-real.jpg" alt="Peta Malaysia" class="malaysia-map">
 
-<!-- KEDAH -->
-<path class="state" data-name="Kedah" data-ydp="YDP Kedah"
-d="M340 140 Q380 120 410 150 Q420 200 390 230 Q350 220 340 180 Z"/>
+    <!-- Button Overlay Negeri -->
+    <button class="state-btn" style="top:10%; left:20%;" data-name="Perlis" data-ydp="YDP Perlis" data-img="img/perlis.jpg"></button>
+    <button class="state-btn" style="top:15%; left:18%;" data-name="Kedah" data-ydp="YDP Kedah" data-img="img/kedah.jpg"></button>
+    <button class="state-btn" style="top:18%; left:22%;" data-name="Pulau Pinang" data-ydp="YDP PP" data-img="img/pp.jpg"></button>
+    <!-- tambah semua negeri ikut posisi pada gambar -->
+  </div>
+</section>
 
-<!-- PULAU PINANG -->
-<path class="state" data-name="Pulau Pinang" data-ydp="YDP PP"
-d="M315 190 Q330 185 335 200 Q330 215 315 210 Z"/>
-
-<!-- PERAK -->
-<path class="state" data-name="Perak" data-ydp="YDP Perak"
-d="M370 230 Q420 210 450 250 Q460 320 400 330 Q370 300 370 260 Z"/>
-
-<!-- SELANGOR -->
-<path class="state" data-name="Selangor" data-ydp="YDP Selangor"
-d="M380 330 Q420 310 440 340 Q430 370 390 375 Z"/>
-
-<!-- NEGERI SEMBILAN -->
-<path class="state" data-name="Negeri Sembilan" data-ydp="YDP NS"
-d="M395 375 Q430 360 455 390 Q430 420 400 405 Z"/>
-
-<!-- MELAKA -->
-<path class="state" data-name="Melaka" data-ydp="YDP Melaka"
-d="M395 410 Q420 405 430 420 Q415 435 395 430 Z"/>
-
-<!-- JOHOR -->
-<path class="state" data-name="Johor" data-ydp="YDP Johor"
-d="M420 430 Q520 420 560 470 Q540 540 440 550 Q410 500 420 460 Z"/>
-
-<!-- PAHANG -->
-<path class="state" data-name="Pahang" data-ydp="YDP Pahang"
-d="M450 250 Q520 240 560 300 Q560 420 470 420 Q440 350 450 300 Z"/>
-
-<!-- TERENGGANU -->
-<path class="state" data-name="Terengganu" data-ydp="YDP Terengganu"
-d="M520 240 Q560 230 580 260 Q570 310 530 300 Z"/>
-
-<!-- KELANTAN -->
-<path class="state" data-name="Kelantan" data-ydp="YDP Kelantan"
-d="M500 170 Q550 150 580 190 Q560 230 520 220 Z"/>
-
-<!-- SARAWAK -->
-<path class="state" data-name="Sarawak" data-ydp="YDP Sarawak"
-d="M620 300 Q700 250 820 280 Q880 340 840 430 Q720 460 640 420 Q610 360 620 330 Z"/>
-
-<!-- SABAH -->
-<path class="state" data-name="Sabah" data-ydp="YDP Sabah"
-d="M860 250 Q940 240 980 300 Q960 380 880 390 Q850 340 860 300 Z"/>
-
-</svg>
+<!-- Modal -->
+<div id="stateModal" class="img-modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="modalCaption" style="color:white; margin-top:10px; font-size:18px;"></div>
+</div>
 <div id="tooltip"></div>
 
 <div id="stateCard" class="state-card">
@@ -2096,6 +2126,29 @@ card.innerHTML=
 "<b>"+s.dataset.name+"</b><br>YDP: "+s.dataset.ydp;
 });
 
+const stateBtns = document.querySelectorAll('.state-btn');
+const modal = document.getElementById('stateModal');
+const modalImg = document.getElementById('modalImg');
+const modalCaption = document.getElementById('modalCaption');
+const closeModal = document.querySelector('.close-modal');
+
+stateBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    modal.style.display = 'block';
+    modalImg.src = btn.dataset.img;
+    modalCaption.innerHTML = `<strong>${btn.dataset.name}</strong> - ${btn.dataset.ydp}`;
+  });
+});
+
+closeModal.addEventListener('click', ()=>{
+  modal.style.display = 'none';
+});
+
+// tutup modal bila klik luar gambar
+modal.addEventListener('click', (e)=>{
+  if(e.target === modal){
+    modal.style.display = 'none';
+  }
 });
 
 </script>
