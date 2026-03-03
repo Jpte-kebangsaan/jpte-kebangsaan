@@ -1423,6 +1423,51 @@ transform:scale(1.03);
     transform: translate(-50%, 0);
   }
 }
+  .slider-wrapper{
+  position:relative;
+  width:100%;
+  height:400px;
+}
+
+.slide{
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.slide.active{
+  opacity:1;
+  z-index:1;
+}
+
+.slider-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.overlay-name{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color:white;
+  font-weight:bold;
+  padding:8px 18px;
+  border-radius:20px;
+  font-size:18px;
+  animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown{
+  0%{opacity:0; transform:translate(-50%,-20px);}
+  100%{opacity:1; transform:translate(-50%,0);}
+}
 </style>
 </head>
 
@@ -2295,6 +2340,23 @@ setInterval(() => {
   window.addEventListener("load", () => {
   document.getElementById("loader").classList.add("hide");
 });
+  
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function showSlide(index){
+  slides.forEach((slide,i)=>{
+    slide.classList.remove('active');
+  });
+  slides[index].classList.add('active');
+}
+
+// Auto-slide setiap 4 saat
+setInterval(()=>{
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}, 4000);
+
 </script>
 
 
