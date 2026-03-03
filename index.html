@@ -1387,6 +1387,11 @@ transform:scale(1.03);
   text-align:center;
   margin-top:15px;
 }
+  .card-img-top:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00f2fe, 0 0 35px rgba(0,242,254,0.6);
+  transition: 0.4s;
+}
 </style>
 </head>
 
@@ -1661,7 +1666,68 @@ JPTE merupakan badan perwakilan rasmi pelajar Tingkatan Enam yang menjadi penghu
 </div> <!-- tutup container -->
 </section> <!-- tutup section organisasi -->
 
+<section class="section bg-white text-center py-5">
+  <div class="container">
+    <h3 class="section-title mb-4">YDP Negeri JPTE Kebangsaan</h3>
 
+    <div id="ydpCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Slide 1: Johor -->
+        <div class="carousel-item active">
+          <div class="card mx-auto shadow" style="max-width:300px;">
+            <img src="img/ydp-johor.jpg" class="card-img-top rounded-circle mt-3" alt="YDP Johor" style="width:150px; height:150px; object-fit:cover; margin:auto;">
+            <div class="card-body">
+              <h5 class="card-title">Johor</h5>
+              <p class="card-text"><strong>YDP:</strong> Ahmad Bin Ali</p>
+              <p class="card-text"><strong>Sekolah:</strong> SMK Johor Bahru</p>
+              <p class="card-text"><strong>Tahun:</strong> 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Kedah -->
+        <div class="carousel-item">
+          <div class="card mx-auto shadow" style="max-width:300px;">
+            <img src="img/ydp-kedah.jpg" class="card-img-top rounded-circle mt-3" alt="YDP Kedah" style="width:150px; height:150px; object-fit:cover; margin:auto;">
+            <div class="card-body">
+              <h5 class="card-title">Kedah</h5>
+              <p class="card-text"><strong>YDP:</strong> Siti Nurhaliza</p>
+              <p class="card-text"><strong>Sekolah:</strong> SMK Alor Setar</p>
+              <p class="card-text"><strong>Tahun:</strong> 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Selangor -->
+        <div class="carousel-item">
+          <div class="card mx-auto shadow" style="max-width:300px;">
+            <img src="img/ydp-selangor.jpg" class="card-img-top rounded-circle mt-3" alt="YDP Selangor" style="width:150px; height:150px; object-fit:cover; margin:auto;">
+            <div class="card-body">
+              <h5 class="card-title">Selangor</h5>
+              <p class="card-text"><strong>YDP:</strong> Lim Wei Jie</p>
+              <p class="card-text"><strong>Sekolah:</strong> SMK Klang</p>
+              <p class="card-text"><strong>Tahun:</strong> 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tambah negeri lain ikut format sama -->
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#ydpCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="visually-hidden">Sebelum</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#ydpCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="visually-hidden">Seterusnya</span>
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- Modal -->
 <div id="stateModal" class="img-modal">
