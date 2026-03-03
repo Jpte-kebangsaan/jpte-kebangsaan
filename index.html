@@ -2357,6 +2357,33 @@ setInterval(()=>{
   showSlide(current);
 }, 4000);
 
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const images = document.querySelectorAll(".gallery-img");
+  const closeBtn = document.querySelector("#imgModal .close-modal");
+
+  // Buka modal bila klik gambar
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    });
+  });
+
+  // Tutup bila klik button X
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // Tutup bila klik luar gambar
+  modal.onclick = function(e) {
+    if(e.target === modal){
+      modal.style.display = "none";
+    }
+  };
+});
+
 </script>
 
 
