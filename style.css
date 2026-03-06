@@ -32,3 +32,119 @@ font-size:1.3rem;
 font-style:italic;
 text-shadow:0 0 10px #00f2fe;
 }
+/* ORGANISASI SECTION */
+.org-section{
+background:#0b0b0b;
+color:white;
+padding:80px 20px;
+text-align:center;
+}
+
+.section-title{
+font-size:32px;
+font-weight:800;
+margin-bottom:60px;
+text-shadow:0 0 15px #00f2fe;
+}
+
+/* TREE STRUCTURE */
+
+.org-tree{
+max-width:1000px;
+margin:auto;
+}
+
+/* LEVEL */
+
+.org-level{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:40px;
+}
+
+/* LINE */
+
+.org-line{
+width:4px;
+height:40px;
+background:#00f2fe;
+margin:auto;
+box-shadow:0 0 10px #00f2fe;
+}
+
+/* CARD */
+
+.org-card{
+background:#111;
+padding:20px;
+border-radius:16px;
+width:180px;
+transition:.4s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.org-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:10px;
+border:3px solid #00f2fe;
+box-shadow:0 0 15px #00f2fe;
+}
+
+.org-card h5{
+font-size:16px;
+font-weight:700;
+margin:5px 0;
+}
+
+.org-card span{
+font-size:13px;
+color:#00f2fe;
+}
+
+/* HOVER */
+
+.org-card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 15px #00f2fe,
+0 0 35px rgba(0,242,254,0.6);
+}
+
+/* YDP SPECIAL */
+
+.ydp{
+transform:scale(1.1);
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.org-level{
+flex-direction:column;
+align-items:center;
+}
+
+.org-line{
+height:25px;
+}
+
+}
