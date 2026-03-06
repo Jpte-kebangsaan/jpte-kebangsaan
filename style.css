@@ -446,3 +446,41 @@ transform:translateY(-8px);
 box-shadow:0 10px 30px rgba(0,255,255,0.4);
 background:rgba(0,255,255,0.05);
 }
+/* ORG STRUCTURE */
+
+.org-section{
+padding:80px 20px;
+text-align:center;
+}
+
+.org-tree{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.org-level{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+margin:20px 0;
+}
+
+/* LINE */
+.org-line{
+width:2px;
+height:40px;
+background:#00f2fe;
+margin:auto;
+}
+.org-card h5{
+color:#ffffff;
+font-weight:600;
+margin-top:10px;
+}
+
+.org-card span{
+color:#00f2fe;
+font-size:0.9rem;
+}
