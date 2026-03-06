@@ -449,9 +449,8 @@ letter-spacing:2px;
 
 .portal-moto{
 color:#00f2fe;
-font-size:1.3rem;
-font-style:italic;
-text-shadow:0 0 10px #00f2fe;
+font-size:18px;
+letter-spacing:1px;
 }
 /* ORGANISASI SECTION */
 .org-section{
