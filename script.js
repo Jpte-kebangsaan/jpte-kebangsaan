@@ -182,3 +182,20 @@ document.body.appendChild(overlay);
 });
 
 });
+/* =========================
+GALLERY LIGHTBOX FULL
+========================= */
+
+const galleryImages = document.querySelectorAll(".gallery-img");
+const lightboxOverlay = document.getElementById("lightboxOverlay");
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", function(){
+    lightboxOverlay.innerHTML = `<img src="${this.src}" alt="Gallery Image">`;
+    lightboxOverlay.classList.add("active");
+  });
+});
+
+lightboxOverlay.addEventListener("click", function(){
+  lightboxOverlay.classList.remove("active");
+});
