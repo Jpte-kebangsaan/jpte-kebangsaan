@@ -373,3 +373,76 @@ h1, h2, h3, h4, h5, h6, p, li, span {
   opacity: 1;
   transform: translateY(0);
 }
+/* ===============================
+   STUDENT VOICE SECTION
+=============================== */
+
+.student-voice-section{
+padding:80px 20px;
+background:#121212;
+}
+
+.student-desc{
+max-width:650px;
+margin:20px auto 50px;
+color:#ccc;
+font-size:1rem;
+}
+
+/* GRID */
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1000px;
+margin:auto;
+}
+
+/* CARD DESIGN */
+.voice-card{
+background:rgba(0,0,0,0.5);
+border-radius:15px;
+padding:25px;
+text-align:center;
+cursor:pointer;
+border:1px solid rgba(0,255,255,0.1);
+transition:all 0.35s ease;
+box-shadow:0 5px 20px rgba(0,255,255,0.1);
+}
+
+/* ICON TITLE */
+.voice-card h3{
+font-size:1.2rem;
+color:#00f2fe;
+margin-bottom:10px;
+}
+
+/* TEXT */
+.voice-card p{
+font-size:0.9rem;
+color:#ccc;
+margin-bottom:20px;
+}
+
+/* BUTTON */
+.voice-btn{
+background:#00f2fe;
+border:none;
+padding:8px 18px;
+border-radius:8px;
+font-weight:600;
+color:#000;
+transition:0.3s;
+}
+
+.voice-btn:hover{
+background:#00c4d6;
+color:white;
+}
+
+/* HOVER EFFECT */
+.voice-card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 30px rgba(0,255,255,0.4);
+background:rgba(0,255,255,0.05);
+}
