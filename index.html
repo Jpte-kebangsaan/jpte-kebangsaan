@@ -1504,6 +1504,113 @@ transform:scale(1.03);
   font-size: 28px;
   cursor: pointer;
 }
+  /* SECTION */
+
+.org-section{
+padding:100px 20px;
+text-align:center;
+background:#f5f9ff;
+}
+
+.section-title{
+font-size:32px;
+margin-bottom:50px;
+font-weight:700;
+}
+
+/* TREE */
+
+.org-tree{
+max-width:1000px;
+margin:auto;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* LEVEL */
+
+.org-level{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:40px;
+}
+
+/* LINE CONNECTOR */
+
+.org-line{
+width:3px;
+height:40px;
+background:#0ea5e9;
+margin-bottom:40px;
+}
+
+/* CARD */
+
+.org-card{
+background:white;
+padding:20px;
+border-radius:15px;
+width:180px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.org-card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+
+.org-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:10px;
+border:3px solid #0ea5e9;
+}
+
+/* NAME */
+
+.org-card h5{
+margin:8px 0;
+font-size:16px;
+}
+
+/* POSITION */
+
+.org-card span{
+font-size:13px;
+color:#555;
+}
+
+/* YDP SPECIAL */
+
+.ydp{
+background:#0ea5e9;
+color:white;
+}
+
+.ydp span{
+color:#e0f7ff;
+}
+
+/* REVEAL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(30px);
+transition:0.6s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 </head>
 
@@ -2412,6 +2519,33 @@ window.onclick = function(event) {
     closeForm();
   }
 }
+  
+
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight;
+
+let elementTop=reveals[i].getBoundingClientRect().top;
+
+let elementVisible=100;
+
+if(elementTop<windowHeight-elementVisible){
+
+reveals[i].classList.add("active");
+
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+
 </script>
 
 
