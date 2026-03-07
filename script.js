@@ -32,11 +32,11 @@ galleryImages.forEach(img => {
 });
 function openForm(type){
   const urlMap = {
-    akademik: "link_form_akademik",
-    kebajikan: "link_form_kebajikan",
-    kokurikulum: "link_form_kokurikulum",
-    pentadbiran: "link_form_pentadbiran",
-    terbuka: "link_form_terbuka"
+    akademik: "https://forms.gle/kwg7FbCR5ALwsxoL9",
+    kebajikan: "https://forms.gle/oHb5HjhzD4sXKc4j9",
+    kokurikulum: "https://forms.gle/vzG7wDX81KMUWjvFA",
+    pentadbiran: "https://forms.gle/ng3AkMDtm1JkJtXR8",
+    terbuka: "https://forms.gle/xEoPuj7Drfs17AnF8"
   };
   document.getElementById("formFrame").src = urlMap[type];
   document.getElementById("formModal").style.display = "block";
