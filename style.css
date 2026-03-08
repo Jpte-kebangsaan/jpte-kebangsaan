@@ -618,3 +618,374 @@ height:40px;
 background:#00f2fe;
 margin:auto;
 }
+/* ==============================
+   VARIABLES
+============================== */
+:root {
+  --bg-color: #ffffff;           /* Latar putih */
+  --text-color: #333333;         /* Teks gelap */
+  --primary-color: #00c4ff;      /* Light blue utama */
+  --secondary-color: #e6f7ff;    /* Light blue lembut untuk hover/card bg */
+  --card-shadow: rgba(0,196,255,0.2);
+}
+
+/* ==============================
+   GENERAL RESET
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* ==============================
+   SCROLLBAR
+============================== */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* ==============================
+   HEADER & NAVBAR
+============================== */
+.gov-header {
+  background-color: #ffffff;
+  color: var(--text-color);
+  padding: 15px 0;
+}
+.gov-logo {
+  max-height: 60px;
+  border-radius: 8px;
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom:1px solid #eee;
+}
+.navbar .nav-link {
+  color: var(--text-color);
+}
+.navbar .nav-link:hover {
+  color: var(--primary-color);
+  text-shadow: none;
+}
+.navbar-toggler {
+  border-color: var(--primary-color);
+}
+.navbar-toggler-icon {
+  filter: invert(0.5);
+}
+#darkToggle i {
+  color: var(--primary-color);
+}
+
+/* ==============================
+   HERO / PORTAL BANNER
+============================== */
+.portal-banner {
+  background: url('img/banner.jpg') center/cover no-repeat;
+  height: 450px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.portal-overlay {
+  position: absolute;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,196,255,0.1);
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  color: var(--primary-color);
+  text-align: center;
+  padding: 0 20px;
+}
+.portal-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px var(--primary-color);
+}
+.portal-moto {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 15px;
+  text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* ==============================
+   SECTIONS & HEADINGS
+============================== */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px var(--primary-color);
+}
+.section {
+  padding: 60px 20px;
+}
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* ==============================
+   CARDS
+============================== */
+.card, .pro-card, .about-card, .service-card, .voice-card, .org-card {
+  background: #ffffff;
+  color: var(--text-color);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 20px var(--card-shadow);
+  transition: all 0.3s ease;
+  border: 1px solid var(--secondary-color);
+}
+
+.card:hover, .pro-card:hover, .about-card:hover, .service-card:hover, .voice-card:hover, .org-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,196,255,0.4);
+  background: var(--secondary-color);
+}
+
+.about-icon i, .pro-card i, .voice-card h3, .org-card span {
+  color: var(--primary-color);
+}
+
+/* ==============================
+   COUNTDOWN
+============================== */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.time-box {
+  background: rgba(0,196,255,0.1);
+  padding: 15px 20px;
+  border-radius: 8px;
+  min-width: 70px;
+}
+.time-box span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+}
+.time-box small {
+  display:block;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+   GALLERY
+============================== */
+.gallery-img-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.gallery-img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+#lightboxOverlay {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  display:none; justify-content:center; align-items:center;
+  z-index:9999;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+.btn-study-pro, .btn-pulse, .btn-secondary, .voice-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-study-pro:hover, .btn-pulse:hover, .btn-secondary:hover, .voice-btn:hover {
+  background-color: #009edb;
+  color: #fff;
+}
+
+/* ==============================
+   SOCIAL ICONS
+============================== */
+.social-icons a {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin: 0 8px;
+  transition: 0.3s;
+}
+.social-icons a:hover {
+  color: #009edb;
+  transform: scale(1.2);
+}
+
+/* ==============================
+   MODAL
+============================== */
+.form-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left:0; top:0;
+  width:100%; height:100%;
+  background: rgba(0,196,255,0.1);
+  justify-content:center;
+  align-items:center;
+}
+.form-modal-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  color: var(--text-color);
+}
+
+/* ==============================
+   ORG CHART
+============================== */
+.org-section{
+  padding:80px 20px;
+  text-align:center;
+}
+.org-tree{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.org-level{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  margin:20px 0;
+}
+
+.org-card {
+  background:#ffffff;
+  border-radius:12px;
+  padding:15px;
+  width:180px;
+  text-align:center;
+  box-shadow:0 5px 20px var(--card-shadow);
+  transition:0.3s;
+}
+
+.org-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 8px 25px rgba(0,196,255,0.3);
+}
+
+.org-card img {
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
+  border:3px solid var(--primary-color);
+}
+
+.org-card h5{
+  color: var(--text-color);
+  font-size:1rem;
+  margin-bottom:5px;
+}
+
+.org-card span{
+  color: var(--primary-color);
+  font-size:0.9rem;
+}
+
+.org-line{
+  width:2px;
+  height:40px;
+  background: var(--primary-color);
+  margin:auto;
+}
+
+/* ==============================
+   STUDENT VOICE
+============================== */
+.student-voice-section{
+  padding:80px 20px;
+  background:#f8faff;
+}
+.student-desc{
+  max-width:650px;
+  margin:20px auto 50px;
+  color:#333;
+  font-size:1rem;
+}
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1000px;
+  margin:auto;
+}
+.voice-card{
+  background: #ffffff;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid var(--secondary-color);
+  transition:all 0.35s ease;
+  box-shadow:0 5px 20px var(--card-shadow);
+}
+.voice-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 30px rgba(0,196,255,0.4);
+  background: var(--secondary-color);
+}
+.voice-card h3{
+  font-size:1.2rem;
+  color: var(--primary-color);
+  margin-bottom:10px;
+}
+.voice-card p{
+  font-size:0.9rem;
+  color:#333;
+  margin-bottom:20px;
+}
