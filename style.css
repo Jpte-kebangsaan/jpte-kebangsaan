@@ -10,8 +10,8 @@
 }
 
 body {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #ffffff;
+  color: #333;
   line-height: 1.6;
 }
 
@@ -22,19 +22,19 @@ body::-webkit-scrollbar {
   width: 8px;
 }
 body::-webkit-scrollbar-thumb {
-  background: #555;
+  background: #ccc;
   border-radius: 4px;
 }
 body::-webkit-scrollbar-track {
-  background: #222;
+  background: #f1f1f1;
 }
 
 /* ==============================
    HEADER
 ============================== */
 .gov-header {
-  background-color: #1f1f1f;
-  color: #fff;
+  background-color: #ffffff;
+  color: #222;
   padding: 15px 0;
 }
 .gov-logo {
@@ -46,17 +46,16 @@ body::-webkit-scrollbar-track {
    NAVBAR
 ============================== */
 .navbar {
-  background-color: #1f1f1f !important;
-  padding: 10px 0;
+  background-color: #ffffff !important;
+  border-bottom:1px solid #eee;
 }
 .navbar .nav-link {
-  color: #ccc;
-  margin: 0 8px;
-  font-weight: 500;
+  color: #333;
 }
+
 .navbar .nav-link:hover {
-  color: #00f2fe;
-  text-shadow: 0 0 8px #00f2fe;
+  color: #0d6efd;
+  text-shadow: none;
 }
 .navbar-toggler {
   border-color: #00f2fe;
@@ -116,17 +115,19 @@ body::-webkit-scrollbar-track {
   padding: 60px 20px;
 }
 .bg-light {
-  background-color: #1e1e1e !important;
-}
-.bg-white {
-  background-color: #1a1a1a !important;
+  background-color: #f8f9fa !important;
 }
 
+.bg-white {
+  background-color: #ffffff !important;
+}
 /* ==============================
    CARDS
 ============================== */
 .about-card, .pro-card, .service-card, .card {
-  background: rgba(0,0,0,0.5);
+ background: #ffffff;
+color:#333;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
   border-radius: 12px;
   padding: 20px;
   color: #e0e0e0;
