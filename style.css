@@ -381,3 +381,7 @@ body::-webkit-scrollbar-track {
     align-items: flex-start; /* Forces everything inside the card to the left */
     text-align: left;
 }
+.portal-overlay p.text-dark {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    opacity: 0.9; /* Supaya hitamnya nampak lebih lembut dan elegan */
+}
