@@ -375,3 +375,9 @@ body::-webkit-scrollbar-track {
   color:#333;
   margin-bottom:20px;
 }
+.about-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Forces everything inside the card to the left */
+    text-align: left;
+}
