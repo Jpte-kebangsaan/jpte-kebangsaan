@@ -86,3 +86,85 @@ document.getElementById("merit").innerHTML = merit.toFixed(2) + "%";
 document.getElementById("status").innerHTML = status;
 
 }
+const gredOptions = `
+<option value="">Pilih Gred</option>
+<option value="4.00">A</option>
+<option value="3.67">A-</option>
+<option value="3.33">B+</option>
+<option value="3.00">B</option>
+<option value="2.67">B-</option>
+<option value="2.33">C+</option>
+<option value="2.00">C</option>
+<option value="1.67">C-</option>
+<option value="1.33">D+</option>
+<option value="1.00">D</option>
+<option value="0.00">F</option>
+`;
+
+document.querySelectorAll(".subjek").forEach(s => {
+if(s.innerHTML === "") s.innerHTML = gredOptions;
+});
+const semua = document.querySelectorAll(".subjek");
+const kokoInput = document.getElementById("koko");
+
+semua.forEach(s => s.addEventListener("change", kira));
+kokoInput.addEventListener("input", kira);
+
+function kira(){
+
+let pa = parseFloat(document.getElementById("pa").value);
+
+// VALIDATION PA LULUS
+if(!pa || pa < 2.00){
+document.getElementById("status").innerHTML = "❌ PA wajib lulus (minimum C)";
+return;
+}
+
+// ambil subjek lain
+let lain = [];
+semua.forEach((s,i)=>{
+if(i !== 0){
+let val = parseFloat(s.value);
+if(!isNaN(val)) lain.push(val);
+}
+});
+
+// VALIDATION minimum 4 subjek
+if(lain.length < 4){
+document.getElementById("status").innerHTML = "⚠ Isi sekurang-kurangnya 4 subjek";
+return;
+}
+
+// gabung PA + lain
+let semuaSubjek = [pa, ...lain];
+
+// ambil 4 terbaik
+semuaSubjek.sort((a,b)=>b-a);
+let best4 = semuaSubjek.slice(0,4);
+
+// kira PNGK
+let total = best4.reduce((a,b)=>a+b,0);
+let pngk = total / 4;
+
+// kira merit
+let koko = parseFloat(kokoInput.value) || 0;
+let merit = (pngk/4 * 90) + (koko * 0.1);
+
+// status
+let status = "";
+if(merit >= 85){
+status = "🔥 Sangat Tinggi";
+}else if(merit >= 75){
+status = "✅ Tinggi";
+}else if(merit >= 65){
+status = "👍 Baik";
+}else{
+status = "⚠ Rendah";
+}
+
+// display
+document.getElementById("pngk").innerHTML = pngk.toFixed(2);
+document.getElementById("merit").innerHTML = merit.toFixed(2) + "%";
+document.getElementById("status").innerHTML = status;
+
+}
