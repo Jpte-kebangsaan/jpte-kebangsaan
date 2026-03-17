@@ -50,3 +50,39 @@ const toggle = document.getElementById('darkToggle');
 toggle.addEventListener('click', ()=>{
   document.body.classList.toggle('dark-mode');
 });
+function kiraSemua(){
+
+let s1 = parseFloat(document.getElementById("sub1").value) || 0;
+let s2 = parseFloat(document.getElementById("sub2").value) || 0;
+let s3 = parseFloat(document.getElementById("sub3").value) || 0;
+let s4 = parseFloat(document.getElementById("sub4").value) || 0;
+let koko = parseFloat(document.getElementById("koko").value) || 0;
+
+// kira PNGK
+let subs = [s1,s2,s3,s4];
+let total = subs.reduce((a,b)=>a+b,0);
+let count = subs.filter(v=>v>0).length;
+
+let pngk = total / count;
+
+// kira merit (90% akademik + 10% koko)
+let merit = (pngk/4 * 90) + (koko * 0.1);
+
+// status
+let status = "";
+if(merit >= 80){
+status = "🔥 Sangat Tinggi (Course Popular)";
+}else if(merit >= 70){
+status = "✅ Baik (Banyak Pilihan)";
+}else if(merit >= 60){
+status = "⚠ Sederhana";
+}else{
+status = "❌ Rendah";
+}
+
+// display
+document.getElementById("pngk").innerHTML = pngk.toFixed(2);
+document.getElementById("merit").innerHTML = merit.toFixed(2) + "%";
+document.getElementById("status").innerHTML = status;
+
+}
