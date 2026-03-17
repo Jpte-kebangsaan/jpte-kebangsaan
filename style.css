@@ -385,3 +385,10 @@ body::-webkit-scrollbar-track {
     font-family: 'Inter', 'Poppins', sans-serif;
     opacity: 0.9; /* Supaya hitamnya nampak lebih lembut dan elegan */
 }
+.merit-box{
+max-width:420px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
