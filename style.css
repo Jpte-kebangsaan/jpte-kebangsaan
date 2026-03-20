@@ -426,3 +426,19 @@ p, .about-card p, .service-card p, .pro-card p {
   color: #fff;
   border: 1px solid var(--primary-yellow);
 }
+.org-card {
+    transition: transform 0.3s ease;
+}
+
+.org-card:hover {
+    transform: translateY(-10px); /* Efek terangkat bila hover */
+}
+
+/* Jarak antara level */
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+.org-section {
+    background-color: #f8f9fa;
+}
