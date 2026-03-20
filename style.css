@@ -3,13 +3,13 @@
    VARIABLES
 ============================== */
 :root {
-  --bg-color: #ffffff;           /* Latar putih */
-  --text-color: #333333;         /* Teks gelap */
-  --primary-color: #00c4ff;      /* Light blue utama */
-  --secondary-color: #e6f7ff;    /* Light blue lembut untuk hover/card bg */
-  --card-shadow: rgba(0,196,255,0.2);
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --primary-blue: #0033aa;   /* Biru Diraja */
+  --primary-red: #cc0000;    /* Merah Bendera */
+  --primary-yellow: #ffcc00; /* Kuning Diraja */
+  --card-shadow: rgba(0, 0, 0, 0.1);
 }
-
 /* ==============================
    GENERAL RESET
 ============================== */
@@ -391,4 +391,38 @@ background:white;
 padding:30px;
 border-radius:12px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+/* Mengubah semua teks dalam BOLD kepada HURUF BESAR & Justify */
+b, strong, .fw-bold {
+  text-transform: uppercase;
+}
+
+p, .about-card p, .service-card p, .pro-card p {
+  text-align: justify;
+}
+
+/* Banner yang lebih rasmi (Tiada Glow) */
+.portal-banner {
+  background-color: var(--primary-blue);
+  border-bottom: 5px solid var(--primary-yellow);
+  color: white;
+  height: 200px;
+}
+
+/* Kad dengan tema warna baru */
+.about-card, .pro-card, .service-card, .voice-card {
+  border-top: 4px solid var(--primary-red); /* Garisan merah sebagai aksen */
+  background: #fff;
+  box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.about-icon i, .section-title {
+  color: var(--primary-blue);
+  text-shadow: none; /* Buang kesan neon */
+}
+
+.btn-study-pro, .btn-pulse, .voice-btn {
+  background-color: var(--primary-red);
+  color: #fff;
+  border: 1px solid var(--primary-yellow);
 }
