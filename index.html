@@ -1,733 +1,430 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-
 <meta charset="UTF-8">
-<title>Portal JPTEK</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>JPTEK - Portal Rasmi Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan</title>
 
+<!-- Bootstrap 5 + Icons + Fonts -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link rel="stylesheet" href="style.css">
-
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #f4f7fc;
+  }
+  /* Header & Nav */
+  .gov-header {
+    background: linear-gradient(135deg, #002b7a 0%, #001d4a 100%);
+    color: white;
+  }
+  .gov-logo {
+    max-height: 75px;
+    width: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background: white;
+    padding: 4px;
+    transition: 0.2s;
+  }
+  .navbar-dark.bg-dark {
+    background: #0a1c3a !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  .navbar-nav .nav-link {
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    transition: 0.2s;
+    color: #f0f0f0 !important;
+  }
+  .navbar-nav .nav-link:hover { color: #ffcc00 !important; transform: translateY(-2px); }
+  
+  /* Banner */
+  .portal-banner {
+    background: linear-gradient(120deg, #ffffff 0%, #eef2ff 100%);
+    padding: 3rem 1rem;
+    border-bottom: 4px solid #ffcc00;
+  }
+  .portal-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #002b7a, #004eaf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .portal-moto {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #1e3a8a;
+    border-top: 2px solid #ffcc00;
+    display: inline-block;
+    padding-top: 0.5rem;
+  }
+  /* Countdown */
+  .countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .time-box {
+    background: #0a1c3a;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    min-width: 90px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  .time-box span { font-size: 2.3rem; font-weight: 800; display: block; }
+  .btn-study-pro {
+    background: linear-gradient(95deg, #ff9800, #f57c00);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    box-shadow: 0 8px 18px rgba(245,124,0,0.3);
+  }
+  .btn-study-pro:hover { transform: scale(1.05); color: white; }
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #0033aa;
+  }
+  .section-title:after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #ffcc00;
+    margin: 0.5rem auto 0;
+    border-radius: 4px;
+  }
+  .about-card, .pro-card, .org-card, .service-card {
+    transition: all 0.3s ease;
+    background: white;
+    border-radius: 24px;
+  }
+  .about-card:hover, .pro-card:hover, .org-card:hover, .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+  }
+  .pro-card { padding: 2rem 1.2rem; text-align: center; height: 100%; }
+  .pro-card i { font-size: 2.8rem; color: #0033aa; margin-bottom: 1rem; }
+  .service-img img { width: 100%; height: 200px; object-fit: cover; border-radius: 18px; }
+  .gallery-img-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  .gallery-img { width: 100%; height: 220px; object-fit: cover; transition: 0.4s; }
+  .gallery-img-wrapper:hover .gallery-img { transform: scale(1.05); }
+  #lightboxOverlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    display: none; justify-content: center; align-items: center; z-index: 2000;
+    cursor: pointer;
+  }
+  .lightbox-img { max-width: 85%; max-height: 85%; border-radius: 20px; }
+  .student-voice-section { background: linear-gradient(to bottom, #f0f5ff, #ffffff); padding: 4rem 0; }
+  .card-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 2rem; }
+  .voice-card {
+    background: white; border-radius: 28px; padding: 1.8rem; width: 260px;
+    cursor: pointer; transition: 0.25s; text-align: center; border-bottom: 5px solid #ffcc00;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  }
+  .voice-card:hover { transform: translateY(-8px); background: #fef9e6; }
+  .voice-card h3 { font-size: 1.5rem; font-weight: 700; color: #0033aa; }
+  .voice-btn { background: #0a1c3a; color: white; border: none; padding: 8px 20px; border-radius: 40px; font-weight: 600; margin-top: 1rem; }
+  .form-modal {
+    display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.7); z-index: 2100; justify-content: center; align-items: center;
+  }
+  .form-modal-content { background: white; width: 90%; max-width: 700px; border-radius: 32px; overflow: hidden; animation: fadeInUp 0.3s; }
+  .close-modal { float: right; font-size: 32px; cursor: pointer; padding: 10px 20px; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px);} to { opacity: 1; transform: translateY(0);} }
+  .btn-pulse { background: #0033aa; padding: 12px 28px; border-radius: 60px; color: white; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 12px; transition: 0.2s; box-shadow: 0 8px 16px rgba(0,51,170,0.3); }
+  .btn-pulse:hover { background: #002288; transform: scale(1.02); color: #ffcc00; }
+  .social-icons a { font-size: 2rem; margin: 0 12px; color: #0033aa; transition: 0.2s; display: inline-block; }
+  .social-icons a:hover { transform: translateY(-4px); color: #ff9800; }
+  footer { background: #07152e; color: #bbb; padding: 2rem; margin-top: 2rem; text-align: center; }
+  @media (max-width:768px){ .portal-title { font-size: 2rem; } .time-box { padding: 0.7rem 1rem; min-width: 70px; } .time-box span { font-size: 1.7rem; } }
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
-
+<!-- HEADER dengan logo sekolah (img/logo-sekolah.jpg) -->
 <div class="gov-header py-3">
-<div class="container">
-<div class="row align-items-center text-center">
-
-<div class="col-md-2">
-<img src="img/logo-sekolah.jpg" class="gov-logo">
-</div>
-
-<div class="col-md-8">
-<p class="mb-0">Laman Rasmi JPTE Kebangsaan Tingkatan Enam</p>
-</div>
-
-
-
-</div>
-</div>
+  <div class="container">
+    <div class="row align-items-center text-center">
+      <div class="col-md-2">
+        <img src="img/logo-sekolah.jpg" class="gov-logo" alt="Logo Sekolah" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%23ffcc00%22/%3E%3Ctext%20x=%2250%22%20y=%2267%22%20font-size=%2230%22%20text-anchor=%22middle%22%20fill=%22%230033aa%22%3EJPTE%3C/text%3E%3C/svg%3E'">
+      </div>
+      <div class="col-md-8">
+        <p class="mb-0 fw-bold" style="font-size: 1.2rem;">Laman Rasmi JPTE Kebangsaan Tingkatan Enam</p>
+        <small>Memperkasa Kepimpinan & Demokrasi Pelajar</small>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<div class="container">
-
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-  <span class="navbar-toggler-icon"></span>
-</button>
-  
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav mx-auto">
-<li class="nav-item"><a class="nav-link" href="#home">Utama</a></li>
-<li class="nav-item"><a class="nav-link" href="#about">Pengenalan</a></li>
-<li class="nav-item"><a class="nav-link" href="#kepentingan">Kepentingan</a></li>
-<li class="nav-item"><a class="nav-link" href="#org">Organisasi</a></li>
-<li class="nav-item"><a class="nav-link" href="#contact">Hubungi</a></li>
-</ul>
-</div>
-
-</div>
-</nav>
-<!-- HERO -->
-<!-- TOP PORTAL BANNER -->
-<section class="portal-banner text-center">
-    <div class="portal-overlay">
-        
-        <p class="text-dark fw-bold mb-1" style="letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">
-            Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan
-        </p>
-
-        <h1 class="portal-title">
-            <i class="fas fa-globe"></i> PORTAL JPTEK
-        </h1>
-
-        <p class="portal-moto">
-            Aspirasi Pelajar, Keutuhan Negara
-        </p>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Utama</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Pengenalan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kepentingan">Kepentingan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#org">Organisasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Hubungi</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<section id="home" class="portal-banner text-center">
+  <div class="container">
+    <p class="text-dark fw-bold mb-1" style="letter-spacing: 2px;">Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan</p>
+    <h1 class="portal-title"><i class="fas fa-globe me-2"></i> PORTAL JPTEK</h1>
+    <p class="portal-moto">Aspirasi Pelajar, Keutuhan Negara</p>
+  </div>
 </section>
+
+<!-- COUNTDOWN + JOM STUDY -->
 <section class="text-center py-5 bg-white">
-<h3 class="fw-bold mb-4">EXAM SEM 2 IN : KEEP GOING !!</h3>
-
-<div class="countdown">
-
-<div class="time-box">
-<span id="days">00</span>
-<small>Hari</small>
-</div>
-
-<div class="time-box">
-<span id="hours">00</span>
-<small>Jam</small>
-</div>
-
-<div class="time-box">
-<span id="minutes">00</span>
-<small>Minit</small>
-</div>
-
-<div class="time-box">
-<span id="seconds">00</span>
-<small>Saat</small>
-</div>
-
-</div>
-  
+  <h3 class="fw-bold mb-4">EXAM SEM 2 IN : KEEP GOING !!</h3>
+  <div class="countdown">
+    <div class="time-box"><span id="days">00</span><small>Hari</small></div>
+    <div class="time-box"><span id="hours">00</span><small>Jam</small></div>
+    <div class="time-box"><span id="minutes">00</span><small>Minit</small></div>
+    <div class="time-box"><span id="seconds">00</span><small>Saat</small></div>
+  </div>
   <div class="text-center mt-4">
-<a href="https://adam007-bit.github.io/PORTAL-STUDY-4.00/" target="_blank" class="btn-study-pro reveal-btn">
-<i class="fas fa-book-open"></i>
-Jom Study
-</a>
-</div>
+    <a href="https://adam007-bit.github.io/PORTAL-STUDY-4.00/" target="_blank" class="btn-study-pro">
+      <i class="fas fa-book-open"></i> Jom Study
+    </a>
+  </div>
 </section>
-  
 
-
-<!-- ABOUT -->
+<!-- PENGENALAN -->
 <section id="about" class="section py-5 bg-white">
   <div class="container">
-    <h3 class="section-title text-center fw-bold mb-4" style="color: #0033aa;">Pengenalan</h3>
-
+    <h3 class="section-title text-center fw-bold">Pengenalan</h3>
     <p class="mx-auto px-3" style="max-width: 850px; text-align: justify; line-height: 1.8;">
       Penubuhan JPTEK merupakan langkah strategik dalam memperkasa pendidikan Tingkatan Enam selaras dengan matlamat pendidikan nasional serta Pelan Hala Tuju PPTE 2024–2030. 
       Inisiatif ini berfungsi sebagai platform rasmi untuk pelajar mengaplikasikan kemahiran kepimpinan, menyuarakan pandangan kepada pihak pentadbiran, dan membina sahsiah masa hadapan. 
       Melalui peranan sebagai wakil rakan sebaya yang proaktif, JPTEK komited melahirkan pelajar yang berdaya saing serta bertanggungjawab dalam menyokong pembinaan negara bangsa yang inklusif dan progresif.
     </p>
-
     <div class="row mt-5 g-4 justify-content-center">
-      
       <div class="col-md-6 col-lg-5">
-        <div class="about-card p-4 h-100 shadow-sm border-0" style="border-radius: 15px; background: #f8f9fa;">
+        <div class="about-card p-4 h-100 shadow-sm border-0" style="background: #f8f9fa;">
           <div class="about-icon mb-3 text-primary"><i class="fas fa-eye fa-2x"></i></div>
           <h5 class="fw-bold border-bottom pb-2 mb-3">Visi</h5>
-          <p style="text-align: justify;">
-            Melahirkan pelajar Tingkatan Enam yang mempunyai sifat kepimpinan, jiwa berdaya saing dan menerapkan semangat cinta pada negara.
-          </p>
+          <p>Melahirkan pelajar Tingkatan Enam yang mempunyai sifat kepimpinan, jiwa berdaya saing dan menerapkan semangat cinta pada negara.</p>
         </div>
       </div>
-
       <div class="col-md-6 col-lg-5">
-        <div class="about-card p-4 h-100 shadow-sm border-0" style="border-radius: 15px; background: #f8f9fa;">
+        <div class="about-card p-4 h-100 shadow-sm border-0" style="background: #f8f9fa;">
           <div class="about-icon mb-3 text-danger"><i class="fas fa-bullseye fa-2x"></i></div>
           <h5 class="fw-bold border-bottom pb-2 mb-3">Misi</h5>
-          <ul class="ps-3 mb-0" style="text-align: justify;">
-            <li class="mb-2">Memupuk kemahiran kepimpinan dalam kalangan pelajar Tingkatan Enam.</li>
-            <li class="mb-2">Menyediakan platform komunikasi antara pelajar dengan JPTEK.</li>
-            <li class="mb-2">Mendidik pelajar Tingkatan Enam tentang kepentingan sistem demokrasi.</li>
-            <li class="mb-2">Membangunkan sahsiah dan jati diri pelajar Tingkatan Enam secara holistik.</li>
-            <li class="mb-2">Menyokong aspirasi pendidikan nasional ke arah masyarakat yang bersatu padu.</li>
-          </ul>
+          <ul class="ps-3 mb-0"><li>Memupuk kemahiran kepimpinan dalam kalangan pelajar.</li><li>Menyediakan platform komunikasi antara pelajar dengan JPTEK.</li><li>Mendidik pelajar tentang sistem demokrasi.</li><li>Membangunkan sahsiah dan jati diri secara holistik.</li><li>Menyokong aspirasi pendidikan nasional.</li></ul>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-  
-<section id="kepentingan" class="section bg-light">
-<div class="container text-center">
 
-<h3 class="section-title mb-5">Kepentingan Penubuhan JPTEK</h3>
-
-<div class="row g-4">
-
-<!-- CARD 1 -->
-<div class="col-md-6 col-lg-3">
-<div class="pro-card">
-<i class="fas fa-user-tie"></i>
-<h5>Kepimpinan</h5>
-<p>Melahirkan pelajar yang berkemahiran dalam kepimpinan serta mampu membuat keputusan
-secara matang dan berkesan.</p>
-</div>
-</div>
-
-<!-- CARD 2 -->
-<div class="col-md-6 col-lg-3">
-<div class="pro-card">
-<i class="fas fa-vote-yea"></i>
-<h5>Demokrasi</h5>
-<p>Memupuk amalan demokrasi dalam kalangan pelajar melalui penglibatan aktif dalam proses
-pemilihan dan pembuatan keputusan.</p>
-</div>
-</div>
-
-<!-- CARD 3 -->
-<div class="col-md-6 col-lg-3">
-<div class="pro-card">
-<i class="fas fa-landmark"></i>
-<h5>Selaras Nasional</h5>
-<p>Menyokong dan menyelaraskan usaha pendidikan dengan dasar serta aspirasi pendidikan
-nasional.</p>
-</div>
-</div>
-
-<!-- CARD 4 -->
-<div class="col-md-6 col-lg-3">
-<div class="pro-card">
-<i class="fas fa-comments"></i>
-<h5>Suara Pelajar</h5>
-<p>Menyediakan platform rasmi bagi pelajar untuk menyuarakan pandangan, cadangan dan
-keperluan mereka secara berkesan.</p>
-</div>
-</div>
-
-</div>
-</div>
+<!-- KEPENTINGAN -->
+<section id="kepentingan" class="section bg-light py-5">
+  <div class="container text-center">
+    <h3 class="section-title mb-5">Kepentingan Penubuhan JPTEK</h3>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3"><div class="pro-card"><i class="fas fa-user-tie"></i><h5>Kepimpinan</h5><p>Melahirkan pelajar berkemahiran kepimpinan serta membuat keputusan matang.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="pro-card"><i class="fas fa-vote-yea"></i><h5>Demokrasi</h5><p>Memupuk amalan demokrasi melalui proses pemilihan.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="pro-card"><i class="fas fa-landmark"></i><h5>Selaras Nasional</h5><p>Menyokong dasar serta aspirasi pendidikan nasional.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="pro-card"><i class="fas fa-comments"></i><h5>Suara Pelajar</h5><p>Platform rasmi bagi pelajar menyuarakan pandangan.</p></div></div>
+    </div>
+  </div>
 </section>
 
-
-<section id="org" class="org-section py-5 bg-light">
+<!-- CARTA ORGANISASI INDUK & YDP NEGERI (menggunakan imej yang disediakan) -->
+<section id="org" class="py-5 bg-light">
   <div class="container text-center">
-    <h2 class="section-title fw-bold mb-5" style="color: #0033aa;">CARTA ORGANISASI INDUK</h2>
-
-    <div class="d-flex justify-content-center mb-5">
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 250px; border-radius: 15px; border-top: 5px solid #ffcc00; margin: 10px;">
-        <img src="img/nadi.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
+    <h2 class="section-title fw-bold">CARTA ORGANISASI INDUK</h2>
+    <div class="d-flex justify-content-center mb-4">
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 260px; border-radius: 20px; border-top: 5px solid #ffcc00;">
+        <img src="img/nadi.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #ffcc00;" onerror="this.src='https://placehold.co/120x120?text=Nadi'">
         <h6 class="fw-bold mb-1 text-uppercase">NADIY MASNOH</h6>
         <p class="fw-bold text-primary small mb-0">YANG DIPERTUA</p>
       </div>
     </div>
-
-    <div class="d-flex flex-wrap justify-content-center mb-5">
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px; border-radius: 15px; border-top: 5px solid #0033aa; margin: 15px;">
-        <img src="img/nur.jpg" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-        <h6 class="fw-bold mb-1 text-uppercase">NUR ADRIANNA</h6>
-        <p class="fw-bold text-muted small mb-0">NAIB YANG DIPERTUA</p>
-      </div>
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px; border-radius: 15px; border-top: 5px solid #0033aa; margin: 15px;">
-        <img src="img/sa.jpg" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-        <h6 class="fw-bold mb-1 text-uppercase">NURHIDAYAH</h6>
-        <p class="fw-bold text-muted small mb-0">SETIAUSAHA AGUNG</p>
-      </div>
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px; border-radius: 15px; border-top: 5px solid #0033aa; margin: 15px;">
-        <img src="img/tsa.jpg" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-        <h6 class="fw-bold mb-1 text-uppercase">NUR ARIYANNA</h6>
-        <p class="fw-bold text-muted small mb-0">TIMBALAN SETIAUSAHA</p>
-      </div>
+    <div class="d-flex flex-wrap justify-content-center mb-5 gap-3">
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px;"><img src="img/nur.jpg" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.src='https://placehold.co/100x100?text=NUR'"><h6 class="fw-bold">NUR ADRIANNA</h6><p class="text-muted">NAIB YANG DIPERTUA</p></div>
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px;"><img src="img/sa.jpg" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.src='https://placehold.co/100x100?text=SA'"><h6 class="fw-bold">NURHIDAYAH</h6><p class="text-muted">SETIAUSAHA AGUNG</p></div>
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px;"><img src="img/tsa.jpg" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.src='https://placehold.co/100x100?text=TSA'"><h6 class="fw-bold">NUR ARIYANNA</h6><p class="text-muted">TIMBALAN SETIAUSAHA</p></div>
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px;"><img src="img/b.jpg" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.src='https://placehold.co/100x100?text=B'"><h6 class="fw-bold">NUR BALQIS</h6><p class="text-muted">BENDAHARI</p></div>
+      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px;"><img src="img/tb.jpg" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.src='https://placehold.co/100x100?text=TB'"><h6 class="fw-bold">MOHAMAD AMIRUL</h6><p class="text-muted">TIMBALAN BENDAHARI</p></div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center">
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px; border-radius: 15px; border-top: 5px solid #0033aa; margin: 15px;">
-        <img src="img/b.jpg" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-        <h6 class="fw-bold mb-1 text-uppercase">NUR BALQIS</h6>
-        <p class="fw-bold text-muted small mb-0">BENDAHARI</p>
-      </div>
-      <div class="org-card shadow-sm p-3 bg-white" style="width: 220px; border-radius: 15px; border-top: 5px solid #0033aa; margin: 15px;">
-        <img src="img/tb.jpg" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-        <h6 class="fw-bold mb-1 text-uppercase">MOHAMAD AMIRUL</h6>
-        <p class="fw-bold text-muted small mb-0">TIMBALAN BENDAHARI</p>
-      </div>
-    </div>
-
-  
-</section>
-  </div><section class="org-section py-5 bg-light">
-  <div class="container">
-    <h2 class="section-title text-center fw-bold mb-5" style="color: #0033aa;">YDP JPTE SETIAP NEGERI</h2>
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
-      
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/sabah.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">NADIY BIN MASNOH</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">SABAH</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK GADONG</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 019-6495-950</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/kedah.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">ABDUL MU'MIN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">KEDAH</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK AYER HITAM</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 017-4654-922</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/perlis.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">HAWA NUR AIMUNI BINTI JASMI</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">PERLIS</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMKA (P) ALAWIYAH</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 011-1054-2007</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/penang.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">AHMAD RAFIQUE BIN ROZAIDY</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">PULAU PINANG</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK SUNGAI ARA</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 013-3989-097</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/sembilan.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">MUHAMMAD ADAM SHAZWAN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">NEGERI SEMBILAN</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK TUANKU ABDUL RAHMAN</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 010-8984-741</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/perak.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">MUHAMMAD DANISH YAAKUB</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">PERAK</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK DATO AHMAD LENGGONG</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 011-2146-7944</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/johor.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">ALIF ARDIAN BIN NORMAN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">JOHOR</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK SKUDAI</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 016-4051-863</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/wpkl.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">ARIF AIMAN BIN AZALI</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">WPKL</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK VIVEKANANDA</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 011-1225-3035</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/srwk.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">NUR ARIYANNA NAJWA</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">SARAWAK</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK SIMUNJAN NO.1</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 019-9702-065</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/melaka.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">MUHAMMAD ZAMIR IMAN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">MELAKA</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: KTE MELAKA</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 014-8207 359</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/slgr.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">AHMAD SOLAHUDDIN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">SELANGOR</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK SUNGAI CHOH</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 017-3495-987</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/wpp.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">WAN HAFIZUL IKRAM</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">WP PUTRAJAYA</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK P5 (1)</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 013-349-8824</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/wpl.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">SHAWN CHEN CHEE CHONG</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">WP LABUAN</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SM LABUAN</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 010-7892-806</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/phg.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">MOHAMAD AMIRUL</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">PAHANG</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK PADANG SAUJANA</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 019-4235-704</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/ganu.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">KAISAH IRDINA BINTI MAHMUDIN</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">TERENGGANU</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK SULTAN ISMAIL</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 019-8258-890</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="org-card p-3 shadow-sm h-100 bg-white border-0" style="border-radius: 15px; border-bottom: 4px solid #cc0000;">
-          <div class="d-flex flex-column align-items-center text-center">
-            <img src="img/kelantan.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #0033aa;">
-            <h6 class="fw-bold mb-1 text-uppercase" style="color: #333;">MOHAMAD IMRAN HAKIM</h6>
-            <div class="fw-bold mb-3 small" style="color: #0033aa;">KELANTAN</div>
-          </div>
-          <div class="text-start px-2">
-            <p class="small mb-1 fw-bold text-dark text-uppercase">PTE: SMK BANDAR CHIKU</p>
-            <p class="small mb-0 fw-bold text-dark">NO: 011-3517-0050</p>
-          </div>
-        </div>
-      </div>
-
+    <h2 class="section-title fw-bold mt-3">YDP JPTE SETIAP NEGERI</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center mt-2">
+      <!-- Sabah -->
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/sabah.jpg" class="rounded-circle mb-2" width="100" height="100" style="object-fit:cover;" onerror="this.src='https://placehold.co/100x100'"><h6 class="fw-bold">NADIY BIN MASNOH</h6><span class="badge bg-primary">SABAH</span><p class="small mt-2">SMK GADONG<br>019-6495-950</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/kedah.jpg" class="rounded-circle mb-2" width="100" height="100" style="object-fit:cover;"><h6 class="fw-bold">ABDUL MU'MIN</h6><span class="badge bg-primary">KEDAH</span><p class="small">SMK AYER HITAM<br>017-4654-922</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/perlis.jpg" class="rounded-circle mb-2" width="100" height="100" style="object-fit:cover;"><h6 class="fw-bold">HAWA NUR AIMUNI</h6><span class="badge bg-primary">PERLIS</span><p class="small">SMKA (P) ALAWIYAH<br>011-1054-2007</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/penang.jpg" class="rounded-circle mb-2" width="100" height="100" style="object-fit:cover;"><h6 class="fw-bold">AHMAD RAFIQUE</h6><span class="badge bg-primary">PULAU PINANG</span><p class="small">SMK SUNGAI ARA<br>013-3989-097</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/sembilan.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">MUHAMMAD ADAM</h6><span class="badge bg-primary">NEGERI SEMBILAN</span><p class="small">SMK TUANKU ABDUL RAHMAN<br>010-8984-741</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/perak.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">MUHAMMAD DANISH</h6><span class="badge bg-primary">PERAK</span><p class="small">SMK DATO AHMAD LENGGONG<br>011-2146-7944</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/johor.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">ALIF ARDIAN</h6><span class="badge bg-primary">JOHOR</span><p class="small">SMK SKUDAI<br>016-4051-863</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/wpkl.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">ARIF AIMAN</h6><span class="badge bg-primary">WPKL</span><p class="small">SMK VIVEKANANDA<br>011-1225-3035</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/srwk.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">NUR ARIYANNA NAJWA</h6><span class="badge bg-primary">SARAWAK</span><p class="small">SMK SIMUNJAN NO.1<br>019-9702-065</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/melaka.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">MUHAMMAD ZAMIR</h6><span class="badge bg-primary">MELAKA</span><p class="small">KTE MELAKA<br>014-8207 359</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/slgr.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">AHMAD SOLAHUDDIN</h6><span class="badge bg-primary">SELANGOR</span><p class="small">SMK SUNGAI CHOH<br>017-3495-987</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/wpp.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">WAN HAFIZUL IKRAM</h6><span class="badge bg-primary">WP PUTRAJAYA</span><p class="small">SMK P5 (1)<br>013-349-8824</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/wpl.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">SHAWN CHEN</h6><span class="badge bg-primary">WP LABUAN</span><p class="small">SM LABUAN<br>010-7892-806</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/phg.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">MOHAMAD AMIRUL</h6><span class="badge bg-primary">PAHANG</span><p class="small">SMK PADANG SAUJANA<br>019-4235-704</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/ganu.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">KAISAH IRDINA</h6><span class="badge bg-primary">TERENGGANU</span><p class="small">SMK SULTAN ISMAIL<br>019-8258-890</p></div></div></div>
+      <div class="col"><div class="org-card p-3 bg-white h-100"><div class="text-center"><img src="img/kelantan.jpg" class="rounded-circle mb-2" width="100" height="100"><h6 class="fw-bold">MOHAMAD IMRAN HAKIM</h6><span class="badge bg-primary">KELANTAN</span><p class="small">SMK BANDAR CHIKU<br>011-3517-0050</p></div></div></div>
     </div>
   </div>
 </section>
-<section id="program" class="section bg-light">
+
+<!-- PROGRAM JPTEK dengan gambar akademik.jpg, kepimpinan.jpg, kebajikan.jpg -->
+<section id="program" class="section bg-light py-5">
   <div class="container">
     <h3 class="section-title text-center mb-5">PROGRAM JPTEK</h3>
-
-    <div class="row g-4 justify-content-center">
-
-      <div class="col-md-6 col-lg-4">
-        <div class="service-card h-100">
-          <div class="service-img mb-3">
-            <img src="img/akademik.jpg" class="img-fluid rounded" alt="AKADEMIK">
-          </div>
-          <h5 class="fw-bold text-primary"><i class="fas fa-book-open me-2"></i>AKADEMIK</h5>
-          <hr>
-          <p class="mb-3">
-            <b>WEBINAR TELAAH NOVEL PERWIRA & BITARA NASIONAL 1.0</b>
-          </p>
-          <p class="text-justify">
-            <b>STATUS:</b> <span class="badge bg-success text-white">SELESAI</span><br>
-            <b>PERINGKAT:</b> KEBANGSAAN<br>
-            <b>PENYERTAAN:</b> PELAJAR STPM SELURUH MALAYSIA<br><br>
-           Program akademik yang memberi pendedahan teknik menjawab soalan peperiksaan STPM
-dan menerangkan konsep pembelajaran Prau- Universiti yang menjadi batu loncatan bagi
-memperoleh keputusan yang cemerlang.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="service-card h-100">
-          <div class="service-img mb-3">
-            <img src="img/kepimpinan.jpg" class="img-fluid rounded" alt="KEPIMPINAN">
-          </div>
-          <h5 class="fw-bold text-primary"><i class="fas fa-running me-2"></i>KEPIMPINAN</h5>
-          <hr>
-          <p class="mb-3">
-            <b>VIRTUAL RUN JPTE KEBANGSAAN</b>
-          </p>
-          <p class="text-justify">
-            <b>STATUS:</b> <span class="badge bg-info text-dark">PENDAFTARAN DIBUKA</span><br>
-            <b>FOKUS:</b> KESIHATAN & KESEJAHTERAAN PELAJAR<br>
-            <b>KONSEP:</b> LARIAN MAYA SELURUH NEGARA<br><br>
-            Program gaya hidup sihat yang menggalakkan pelajar mengekalkan kecergasan fizikal sambil
-menyertai cabaran jarak larian secara fleksibel dari lokasi masing-masing.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="service-card h-100">
-          <div class="service-img mb-3">
-            <img src="img/kebajikan.jpg" class="img-fluid rounded" alt="KEBAJIKAN">
-          </div>
-          <h5 class="fw-bold text-primary"><i class="fas fa-hand-holding-heart me-2"></i>KEBAJIKAN</h5>
-          <hr>
-          <p class="text-center mt-5 text-muted">
-            <b>MAKLUMAT AKAN DIKEMASKINI</b><br>
-            RUANGAN INI DISEDIAKAN UNTUK PROGRAM KEBAJIKAN PELAJAR TINGKATAN ENAM PADA MASA AKAN DATANG.
-          </p>
-        </div>
-      </div>
-
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4"><div class="service-card"><div class="service-img mb-3"><img src="img/akademik.jpg" class="img-fluid rounded" onerror="this.src='https://placehold.co/400x200?text=Akademik'"></div><h5 class="fw-bold text-primary"><i class="fas fa-book-open me-2"></i>AKADEMIK</h5><hr><p><b>WEBINAR TELAAH NOVEL PERWIRA & BITARA NASIONAL 1.0</b><br><span class="badge bg-success">SELESAI</span><br>Peringkat Kebangsaan, pelajar STPM seluruh Malaysia.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="service-card"><div class="service-img mb-3"><img src="img/kepimpinan.jpg" class="img-fluid rounded" onerror="this.src='https://placehold.co/400x200?text=Kepimpinan'"></div><h5 class="fw-bold text-primary"><i class="fas fa-running me-2"></i>KEPIMPINAN</h5><hr><p><b>VIRTUAL RUN JPTE KEBANGSAAN</b><br><span class="badge bg-info text-dark">PENDAFTARAN DIBUKA</span><br>Kesihatan & Kesejahteraan, larian maya seluruh negara.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="service-card"><div class="service-img mb-3"><img src="img/kebajikan.jpg" class="img-fluid rounded" onerror="this.src='https://placehold.co/400x200?text=Kebajikan'"></div><h5 class="fw-bold text-primary"><i class="fas fa-hand-holding-heart me-2"></i>KEBAJIKAN</h5><hr><p class="text-muted">Maklumat akan dikemaskini. Ruang untuk program kebajikan pelajar Tingkatan Enam.</p></div></div>
     </div>
   </div>
 </section>
 
-
-<section class="section bg-white">
-<div class="container">
-<h3 class="section-title">Galeri Aktiviti</h3>
-
-<div class="row g-3">
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/1.jpg" class="gallery-img">
+<!-- GALERI AKTIVITI (menggunakan imej 1.jpg hingga 12.jpg) -->
+<section class="section bg-white py-5">
+  <div class="container">
+    <h3 class="section-title text-center">Galeri Aktiviti</h3>
+    <div class="row g-3" id="galleryDynamic">
+      <!-- JS akan generate 1..12.jpg -->
+    </div>
   </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/2.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/3.jpg" class="gallery-img">
-  </div>
-</div>
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/4.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/5.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/6.jpg" class="gallery-img">
-  </div>
-</div>
-
-  <div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/7.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/8.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/9.jpg" class="gallery-img">
-  </div>
-</div>
-
-  <div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/10.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/11.jpg" class="gallery-img">
-  </div>
-</div>
-
-
-<div class="col-md-4">
-  <div class="gallery-img-wrapper">
-    <img src="img/12.jpg" class="gallery-img">
-  </div>
-</div>
-</div>
-</div>
-</section>
-<!-- LIGHTBOX ELEMENT -->
-<div id="lightboxOverlay"></div>
-<section id="student-voice" class="section student-voice-section">
-<div class="container text-center">
-
-<h2 class="section-title">🎤 Student Voice – Saluran Rasmi Pelajar JPTE</h2>
-
-<p class="student-desc">
-Saluran rasmi pelajar untuk membuat aduan atau cadangan mengikut kluster berkaitan.
-Sila pilih kategori yang sesuai.
-</p>
-
-<div class="card-grid">
-
-<div class="voice-card" onclick="openForm('akademik')">
-<h3> Kluster Akademik</h3>
-<p>Fokus kepada kecemerlangan akademik pelajar melalui sokongan pembelajaran, perkongsian
-ilmu dan peningkatan prestasi.</p>
-<button class="voice-btn">Buka Borang</button>
-</div>
-
-<div class="voice-card" onclick="openForm('kebajikan')">
-<h3> Kluster Kebajikan</h3>
-<p>Menjaga kebajikan serta kesejahteraan pelajar dari segi emosi, sosial dan keperluan asas</p>
-<button class="voice-btn">Buka Borang</button>
-</div>
-
-<div class="voice-card" onclick="openForm('kokurikulum')">
-<h3> Kluster Kokurikulum</h3>
-<p>Menggalakkan penglibatan aktif pelajar dalam aktiviti kokurikulum bagi membina kemahiran
-insaniah dan kepimpinan.</p>
-<button class="voice-btn">Buka Borang</button>
-</div>
-
-<div class="voice-card" onclick="openForm('terbuka')">
-<h3> Kluster Terbuka</h3>
-<p>Memberi ruang kepada pelajar untuk menyuarakan idea, pandangan dan cadangan secara
-kreatif dan inklusif.</p>
-<button class="voice-btn">Buka Borang</button>
-</div>
-
-</div>
-
-</div>
 </section>
 
-<!-- Modal Popup -->
-<div id="formModal" class="form-modal">
-  <div class="form-modal-content">
-    <span class="close-modal" onclick="closeForm()">&times;</span>
-    <iframe id="formFrame" src="" width="100%" height="500" frameborder="0">
-      Loading…
-    </iframe>
+<!-- STUDENT VOICE + MODAL -->
+<section id="student-voice" class="student-voice-section">
+  <div class="container text-center">
+    <h2 class="section-title">🎤 Student Voice – Saluran Rasmi Pelajar JPTE</h2>
+    <p class="student-desc mb-4">Saluran rasmi pelajar untuk membuat aduan atau cadangan mengikut kluster berkaitan.</p>
+    <div class="card-grid">
+      <div class="voice-card" onclick="openForm('akademik')"><h3>Kluster Akademik</h3><p>Fokus kecemerlangan akademik.</p><button class="voice-btn">Buka Borang</button></div>
+      <div class="voice-card" onclick="openForm('kebajikan')"><h3>Kluster Kebajikan</h3><p>Kebajikan & kesejahteraan pelajar.</p><button class="voice-btn">Buka Borang</button></div>
+      <div class="voice-card" onclick="openForm('kokurikulum')"><h3>Kluster Kokurikulum</h3><p>Penglibatan aktif & kemahiran insaniah.</p><button class="voice-btn">Buka Borang</button></div>
+      <div class="voice-card" onclick="openForm('terbuka')"><h3>Kluster Terbuka</h3><p>Idea, pandangan & cadangan kreatif.</p><button class="voice-btn">Buka Borang</button></div>
+    </div>
   </div>
-</div>
-
-
-<!-- CONTACT -->
-<section id="contact" class="section text-center">
-<div class="container">
-<h3 class="section-title">Hubungi Kami</h3>
-
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScp28vkbGDj24-akbC35RJIRrv3YBKS8jAxGCmuJLeuQWkfHA/viewform" target="_blank" class="btn-pulse">
-<i class="fas fa-paper-plane me-2"></i>
-Hantar Aduan / Cadangan
-</a>
-<p class="fw-bold mt-5">Ikuti Kami</p>
-
-<div class="social-icons mt-3">
-<a href="https://t.me/USERNAME" target="_blank"><i class="fab fa-telegram"></i></a>
-<a href="https://youtube.com/@jptekebangsaan?si=mF07NJPYxB4qxAGa" target="_blank"><i class="fab fa-youtube"></i></a>
-<a href="https://instagram.com/jpte_kebangsaan" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://tiktok.com/@jpte.kebangsaan" target="_blank"><i class="fab fa-tiktok"></i></a>
-</div>
-
-</div>
 </section>
 
-<!-- FOOTER -->
-<footer class="text-center">
-<div class="container">
-<small>
-© 2026 Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan <br>
-Hak Cipta Terpelihara
-</small>
-</div>
-</footer>
-<script src="script.js"></script>
+<div id="formModal" class="form-modal"><div class="form-modal-content"><span class="close-modal" onclick="closeForm()">&times;</span><iframe id="formFrame" src="" width="100%" height="500" frameborder="0"></iframe></div></div>
+
+<!-- HUBUNGI -->
+<section id="contact" class="section text-center py-5">
+  <div class="container">
+    <h3 class="section-title">Hubungi Kami</h3>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScp28vkbGDj24-akbC35RJIRrv3YBKS8jAxGCmuJLeuQWkfHA/viewform" target="_blank" class="btn-pulse mb-4"><i class="fas fa-paper-plane me-2"></i>Hantar Aduan / Cadangan</a>
+    <p class="fw-bold mt-4">Ikuti Kami</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="https://youtube.com/@jptekebangsaan?si=mF07NJPYxB4qxAGa" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://instagram.com/jpte_kebangsaan" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><small>© 2026 Jawatankuasa Perwakilan Tingkatan Enam Kebangsaan <br> Hak Cipta Terpelihara</small></div></footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // COUNTDOWN (Exam Sem 2 - set to April 30, 2026)
+  const examDate = new Date("April 30, 2026 00:00:00").getTime();
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = examDate - now;
+    if(diff<0){ document.getElementById("days").innerText="0"; document.getElementById("hours").innerText="0"; document.getElementById("minutes").innerText="0"; document.getElementById("seconds").innerText="0"; return; }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+    const seconds = Math.floor((diff%(1000*60))/1000);
+    document.getElementById("days").innerText=days<10?"0"+days:days;
+    document.getElementById("hours").innerText=hours<10?"0"+hours:hours;
+    document.getElementById("minutes").innerText=minutes<10?"0"+minutes:minutes;
+    document.getElementById("seconds").innerText=seconds<10?"0"+seconds:seconds;
+  }
+  setInterval(updateCountdown,1000); updateCountdown();
+
+  // generate gallery using local 1.jpg to 12.jpg
+  const galleryContainer = document.getElementById('galleryDynamic');
+  for(let i=1;i<=12;i++){
+    const colDiv = document.createElement('div');
+    colDiv.className = 'col-md-4 col-lg-3';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'gallery-img-wrapper';
+    const img = document.createElement('img');
+    img.src = `img/${i}.jpg`;
+    img.className = 'gallery-img';
+    img.alt = `Galeri ${i}`;
+    img.onerror = function(){ this.src = 'https://placehold.co/400x300?text=Image+'+i; };
+    wrapper.appendChild(img);
+    colDiv.appendChild(wrapper);
+    galleryContainer.appendChild(colDiv);
+  }
+
+  // LIGHTBOX
+  const overlay = document.createElement('div'); overlay.id="lightboxOverlay"; document.body.appendChild(overlay);
+  const lbImg = document.createElement('img'); lbImg.classList.add('lightbox-img'); overlay.appendChild(lbImg);
+  document.addEventListener('click', function(e){
+    let targetImg = e.target.closest('.gallery-img');
+    if(targetImg && targetImg.closest('.gallery-img-wrapper')){
+      lbImg.src = targetImg.src;
+      overlay.style.display = 'flex';
+    }
+  });
+  overlay.addEventListener('click',()=>{ overlay.style.display='none'; });
+
+  // FORM MODAL functions
+  function openForm(cat){
+    let frame = document.getElementById('formFrame');
+    let baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLScp28vkbGDj24-akbC35RJIRrv3YBKS8jAxGCmuJLeuQWkfHA/viewform?usp=pp_url&entry.1234567890=";
+    if(cat==='akademik') frame.src = baseUrl + "Akademik";
+    else if(cat==='kebajikan') frame.src = baseUrl + "Kebajikan";
+    else if(cat==='kokurikulum') frame.src = baseUrl + "Kokurikulum";
+    else frame.src = baseUrl + "Terbuka";
+    document.getElementById('formModal').style.display = 'flex';
+  }
+  function closeForm(){ document.getElementById('formModal').style.display = 'none'; document.getElementById('formFrame').src = ''; }
+  window.onclick = function(e){ if(e.target === document.getElementById('formModal')) closeForm(); }
+</script>
 </body>
 </html>
